@@ -1,12 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+@php
+      $app=App\Apperance::first();
+
+    @endphp
 
 <div class="login-box">
   <!-- /.login-logo -->
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="#" class="h1" style="color: blue; font-style: italic;"><b>{{ $siteTitle }}</b></a>
+      <a href="#" class="h1" style="color: blue; font-style: italic;"><b>{{ $app->name }}</b></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Sign in to start your session</p>

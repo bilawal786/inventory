@@ -1,9 +1,14 @@
 <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  
+@php
+      $app=App\Apperance::first();
+
+    @endphp
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('index')}}" class="brand-link">
-      <img src="{{asset($sitelogo)}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">{{ $siteTitle }}</span>
+      <img src="{{asset($app->logo)}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">{{ $app->name }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -131,6 +136,54 @@
                             <p>Add Supplier</p>
                         </a>
                     </li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-user" aria-hidden="true"></i>
+                    <p>
+                        Customers
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('Customer.index')}}" class="nav-link">
+                            <i class=" far fa-circle nav-icon"></i>
+                            <p>Customers List</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('Customer.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Customer</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item">
+                <a href="#" class="nav-link">
+                <i class="nav-icon fa fa-user" aria-hidden="true"></i>
+                    <p>
+                        Sales
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('Sales.index')}}" class="nav-link">
+                            <i class=" far fa-circle nav-icon"></i>
+                            <p>sales list</p>
+                        </a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a href="{{route('Sales.create')}}" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Add Customer</p>
+                        </a>
+                    </li> -->
                 </ul>
             </li>
           <li class="nav-header">Setting</li>

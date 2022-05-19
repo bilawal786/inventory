@@ -40,6 +40,16 @@ Route::get('supplier/index', 'SupplierController@index')->name('supplier.index')
 Route::get('supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');
 Route::post('supplier/store', 'SupplierController@store')->name('supplier.store');
 
+//Customer 
+Route::get('Customer/create' ,'CustomerController@create')->name('Customer.create');
+Route::get('Customer/edit/{id}', 'CustomerController@edit')->name('Customer.edit');
+Route::get('Customer/index', 'CustomerController@index')->name('Customer.index');
+Route::post('Customer/store', 'CustomerController@store')->name('Customer.store');
+Route::get('Customer/delete/{id}', 'CustomerController@delete')->name('Customer.delete');
+Route::post('Customer/update/{id}', 'CustomerController@update')->name('Customer.update');
+//Sales 
+Route::get('Sales/create', 'SalesController@Create')->name('Sales.create');
+Route::get('Sales/index', 'SalesController@Create')->name('Sales.index');
 
 Route::get('/profile', [
     'uses' => 'ProfileController@profile',
