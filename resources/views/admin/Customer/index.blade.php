@@ -42,6 +42,7 @@
                                         <th>Phone</th>
                                         <th>City</th>
                                         <th>Address</th>
+                                        
                                         <th style="width: 90px;">Action</th>
                                     </tr>
                                     </thead>
@@ -54,11 +55,11 @@
                                             <td>{{$row->phone}}</td>
                                             <td>{{$row->city}}</td>
                                             <td>{{$row->address}}</td>
-                                            <td>{{$row->}}</td>
+                                            
                                             <td>
-                                                <!-- <a href="{{route('Customer.edit ',['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
+                                                <a href="{{route('Customer.edit', ['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
                                                     <i class="fa fa-pen"></i>
-                                                </a> -->
+                                                </a> 
 
                                                 <a href="{{route('Customer.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">
                                                     <i class="fa fa-times"></i>

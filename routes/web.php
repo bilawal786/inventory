@@ -26,6 +26,8 @@ Route::get('product/create', 'ProductController@create')->name('product.create')
 Route::get('product/index', 'ProductController@index')->name('product.index');
 Route::get('product/delete/{id}', 'ProductController@delete')->name('product.delete');
 Route::post('product/store', 'ProductController@store')->name('product.store');
+Route::get('product/edit/{id}', 'ProductController@edit' )->name('product.edit');
+Route::get('product/update/{id}', 'ProductController@update' )->name('product.update');
 
 //purchase
 Route::get('purchase/create', 'PurchaseController@create')->name('purchase.create');
@@ -39,6 +41,8 @@ Route::get('supplier/create', 'SupplierController@create')->name('supplier.creat
 Route::get('supplier/index', 'SupplierController@index')->name('supplier.index');
 Route::get('supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');
 Route::post('supplier/store', 'SupplierController@store')->name('supplier.store');
+Route::get('supplier/edit/{id}', 'SupplierController@edit')->name('supplier.edit');
+Route::post('supplier/update/{id}','SupplierController@update')->name('supplier.update');
 
 //Customer 
 Route::get('Customer/create' ,'CustomerController@create')->name('Customer.create');
@@ -46,11 +50,14 @@ Route::get('Customer/edit/{id}', 'CustomerController@edit')->name('Customer.edit
 Route::get('Customer/index', 'CustomerController@index')->name('Customer.index');
 Route::post('Customer/store', 'CustomerController@store')->name('Customer.store');
 Route::get('Customer/delete/{id}', 'CustomerController@delete')->name('Customer.delete');
-Route::post('Customer/update/{id}', 'CustomerController@update')->name('Customer.update');
+Route::get('Customer/update/{id}', 'CustomerController@update')->name('Customer.update');
 //Sales 
-Route::get('Sales/create', 'SalesController@Create')->name('Sales.create');
-Route::get('Sales/index', 'SalesController@Create')->name('Sales.index');
-
+Route::get('Sales/create', 'SalesController@create')->name('Sales.create');
+Route::get('Sales/index', 'SalesController@index')->name('Sales.index');
+Route::get('Sales/delete/{id}','SalesController@delete')->name('Sales.delete');
+//Ajex call
+Route::get('ajax-request', [AjaxController::class, 'create']);
+Route::post('ajax-request', [AjaxController::class, 'store']);
 Route::get('/profile', [
     'uses' => 'ProfileController@profile',
     'as' => 'profile'

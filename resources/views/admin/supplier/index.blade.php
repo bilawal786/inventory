@@ -55,7 +55,7 @@
                                             <td>{{$row->city}}</td>
                                             <td>{{$row->address}}</td>
                                             <td>
-                                                <a href="" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
+                                                <a href="{{route('supplier.edit',['id' => $row->id] )}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
                                                     <i class="fa fa-pen"></i>
                                                 </a>
 

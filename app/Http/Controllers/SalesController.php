@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Customer;
+use App\Product;
 class SalesController extends Controller
 {
     public function index(){
@@ -11,6 +12,15 @@ class SalesController extends Controller
         return view('admin.Sales.index', compact('customers'));
     }
    public function create(){
-       return view('admin.sales.index');
+    $products = Product::where('status', '1')->get();
+       return view('admin.Sales.create', compact('products'));
    }
+
+  
+
+
+  
+       
+
+   
 }

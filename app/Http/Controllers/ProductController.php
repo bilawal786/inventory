@@ -50,4 +50,37 @@ class ProductController extends Controller
         );
         return redirect()->back()->with($notification);
     }
+    public function edit($id){
+        $categories = Category::where('status' , '1')->get();
+        $products = Product::where('id', $id)->get();
+        
+        $products=Product::find($id);
+        return view('admin.product.edit' , compact('products','categories'));
+    }
+
+    public function update(Request $request ,$id)
+    {
+         
+        $products= Product::find($id);
+        $products->category_id=$request->category_id;
+        $products->name=$request->name;
+        $products->price=$request->price;
+        $products->stock=$request->stock;
+        $products->alert=$request->alert;
+        $products->code=$request->code;
+        $products->image=$request->image;
+        $products->unit=$request->unit;
+        $products->description=$request->description;
+        $products->save();
+
+       
+       
+
+        $notification = array(
+            'messege' => 'Product Update Successfully!',
+            'alert-type' => 'success'
+        );
+        return Redirect()->route('product.index')->with($notification);
+    }
+
 }

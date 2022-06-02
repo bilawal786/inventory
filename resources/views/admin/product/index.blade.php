@@ -61,7 +61,7 @@
                                                 <td>{{$row->price}}</td>
                                                 <td>{{$row->unit}}</td>
                                                 <td>
-                                                    <a href="" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
+                                                    <a href="{{route('product.edit',['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
                                                         <i class="fa fa-pen"></i>
                                                     </a>
 

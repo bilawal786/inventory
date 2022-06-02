@@ -178,12 +178,12 @@
                             <p>sales list</p>
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
+                    <li class="nav-item">
                         <a href="{{route('Sales.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
-                            <p>Add Customer</p>
+                            <p>Add Sales</p>
                         </a>
-                    </li> -->
+                    </li>
                 </ul>
             </li>
           <li class="nav-header">Setting</li>

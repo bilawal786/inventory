@@ -44,7 +44,7 @@
                                     <div class="form-group">
                                         <label>Product *</label>
                                         <select class="form-control select2" name="product_id" style="width: 100%;" required>
-                                            <option value="{{$purchase->product->id}}">{{$purchase->product->name}}</option>
+                                            <option value="{{$purchase->products->id}}">{{$purchase->products->name}}</option>
                                             @foreach($products as $row)
                                                 <option value="{{$row->id}}">{{$row->name}} ({{$row->code}})</option>
                                             @endforeach

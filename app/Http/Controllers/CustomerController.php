@@ -40,18 +40,28 @@ class CustomerController extends Controller
         return Redirect()->back()->with($notification);
 
     }
-    public function edit(){
-
-        $customers = Customer::where('status', '1')->get();
-        return view('admin.Customer.edit', compact('customers'));
+    public function edit($id){
+       
+        $customer = Customer::where('status', '1')->where('id','=',$id)->first();
+        
+        return view('admin.Customer.edit', compact('customer'));
     }
 
-    public function update(){
-        $customers = Customer::find($id);
+    public function update(Request $request,$id){
+        $customer = Customer::find($id);
         $customer->name =$request->name;
         $customer->email = $request->email;
         $customer->phone =$request->phone;
-        $customer->address =$request->name;
+        $customer->city=$request->city;
+        $customer->address =$request->address;
+        $customer->notes=$request->notes;
+        $customer->save();
+
+        $notification=array(
+            'message'=> 'Customer Delete Successfully',
+            'alert-type'=>'error'
+        );
+        return redirect()->route('Customer.index');
 
     }
 

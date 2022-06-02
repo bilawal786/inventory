@@ -39,4 +39,33 @@ class SupplierController extends Controller
         );
         return Redirect()->back()->with($notification);
     }
+
+
+    public function edit($id){
+        
+        $suppliers = Supplier::where('id', $id)->get();
+        $supplier =Supplier::find($id);
+        
+        return view('admin.supplier.edit',compact('supplier','suppliers'));
+    }
+
+
+    public function update(Request $request ,$id){
+     
+        $supplier=Supplier::find($id);
+        $supplier->name=$request->name;
+        $supplier->email=$request->email;
+        $supplier->phone=$request->phone;
+        $supplier->address=$request->address;
+        $supplier->city=$request->city;
+        $supplier->notes=$request->notes;
+        $supplier->save();
+        
+        $notification = array(
+            'messege' => 'Product Update Successfully!',
+            'alert-type' => 'success'
+        );
+        return redirect()->route('supplier.index')->with($notification);
+
+    }
 }
