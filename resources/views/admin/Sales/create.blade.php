@@ -66,34 +66,19 @@
               </div>
               <!-- /.card-header -->
               <div class="card-body">
-                <table class="table table-bordered" id="ajaxform">
+                <table class="table table-bordered" id="ajextable" >
                   <thead>
                       <tr>
                     <th>Product</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Action</th>
+                    <th>Sub Total</th>
+                  
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                   <td>
-                   <input type="text"  class="product"  name="product[]" readonly />
-                   </td>
-                      <td>
-                        <div class="">
-                        <input type="text"  class="rate"  name="rate[]" readonly />
-                        </div>
-                      </td>
-                     <td>
-                     <input type="text" name="qty[]" id="qty"  value="" />
-                     </td>
-                      <td>
-                      <input type="button" class="aa"  onclick="insRow()" value="Add">
-                      </td>
-                     
-                    </tr>
-                  
+                  <tbody id='myTable'>
+                   
+                
                    
                     
                   </tbody>
@@ -107,8 +92,8 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description</label>
-                                        <textarea name="description" id="summernote"></textarea>
+                                        <label>Grandtotal</label>
+                                        
                                     </div>
                                 </div>
                             </div>
@@ -127,37 +112,21 @@
 <script>
    
   $(".save-data").change(function(event){
-   
-   
-      event.preventDefault();
-
-      let id = $(".save-data").val();
-      alert(id)
-     
-
-      $.ajax({
-        url: "/ajax-request/",
-        type:"POST",
-        data:{
-          name:name,
-          email:email,
-          mobile_number:mobile_number,
-          message:message,
-          _token: _token
-        },
+    let id = $(".save-data").val();
+     $.ajax({
+        url: "/ajax-request/"+id,
+        type:"get",
+        
         success:function(response){
           console.log(response);
           if(response) {
-            $('.success').text(response.success);
-            $("#ajaxform")[0].reset();
+            $('#myTable').append("<tr><td>" +response.name+"<br>st="+response.stock+"<br>pc"+response.code+"</td><td  name='saleprice' id='price'>"+response.price+"</td>  <td id='stock'><input type='number' name='quantity' onclick='subtotal()' id='' ></td><td id='total'></td></tr>");
+         
           }
+          
         },
         error: function(error) {
-         console.log(error);
-          $('#nameError').text(response.responseJSON.errors.name);
-          $('#emailError').text(response.responseJSON.errors.email);
-          $('#mobileError').text(response.responseJSON.errors.mobile);
-          $('#messageError').text(response.responseJSON.errors.message);
+      
         }
        });
   });
@@ -166,13 +135,25 @@
 var table = document.getElementById('purchase_table');
 var rowCount = table.rows.length;
 
+
 var row = table.insertRow(rowCount);
 var colCount = table.rows[1].cells.length;
 for (var i = 0; i < colCount; i++) {
     var newcell = row.insertCell(i);
     newcell.innerHTML = table.rows[1].cells[i].innerHTML;
 }
-}
+
+  }
+  
+  function subtotal(){
+   a
+     var price = $('#price').val();
+   lert  alert('price');
+            var stock = $('#stock').val();
+            
+            var total = saleprice  * stock;
+            $('#total').val(total);
+  }
 </script>
 
    

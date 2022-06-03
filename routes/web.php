@@ -56,8 +56,9 @@ Route::get('Sales/create', 'SalesController@create')->name('Sales.create');
 Route::get('Sales/index', 'SalesController@index')->name('Sales.index');
 Route::get('Sales/delete/{id}','SalesController@delete')->name('Sales.delete');
 //Ajex call
-Route::get('ajax-request', [AjaxController::class, 'create']);
+Route::get('ajax-request/{id}', 'AjaxController@create')->name('create');
 Route::post('ajax-request', [AjaxController::class, 'store']);
+
 Route::get('/profile', [
     'uses' => 'ProfileController@profile',
     'as' => 'profile'
