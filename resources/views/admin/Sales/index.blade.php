@@ -36,21 +36,25 @@
                                 <table id="example1" class="table table-bordered table-striped">
                                     <thead>
                                     <tr>
-                                        <th>Reference No</th>
-                                        <th>Product</th>
-                                        <th>Supplier</th>
-                                        <th>Purchase Price</th>
+                                    <th>Product code</th>
+                                        <th>Product</th> 
+                                        <th>Quantity</th>
                                         <th>Sale Price</th>
+                                        <th>subtotal </th>
                                         <th>Items Purchased</th>
-                                        <th>Total Cost</th>
-                                        <th>Profit</th>
-                                        <th>Purchase Status</th>
+                                          <th>Purchase Status</th>
                                         <th>Payment Status</th>
                                         <th style="width: 90px;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                   
+                                    @foreach($sale as $row)
+                                    {{dd($sale)}}
+                                    <tr>
+                                    <td>{{$row->code}}</td>
+                                    </tr>
+                                        
+                                   @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -35,7 +35,7 @@
                             </button>
                         </div>
                     </div>
-                    <form action="{{route('Sales.create')}}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form action="{{route('Sales.store')}}" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
                     @csrf
                     <!-- /.card-header -->
                         <div class="card-body">
@@ -77,11 +77,17 @@
                     </tr>
                   </thead>
                   <tbody id='myTable'>
-                   
+                   <td name='name'></td>
+                   <td name='price'></td>
+                   <td name='quantity'></td>
+                   <td name='subtotal' ></td>
                 
                    
                     
                   </tbody>
+                    <tfoot>
+    <tr>
+
                 </table>
               </div>
               <!-- /.card-body -->
@@ -93,11 +99,15 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Grandtotal</label>
-                                        
+                                        <div id=grandtotal name="grandtotal">
+                                            0
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary">Add Sales</button>
+                            <button type="submit" class="btn btn-primary">Add Sale</button>
+                           
+                           
                         </div>
                         
                     </form>
@@ -120,8 +130,8 @@
         success:function(response){
           console.log(response);
           if(response) {
-            $('#myTable').append("<tr><td>" +response.name+"<br>st="+response.stock+"<br>pc"+response.code+"</td><td  name='saleprice' id='price'>"+response.price+"</td>  <td id='stock'><input type='number' name='quantity' onclick='subtotal()' id='' ></td><td id='total'></td></tr>");
-         
+            $('#myTable').append("<tr><td name='name'>" +response.name+"("+response.stock+")<br>"+response.code+"</td><td   id='price"+response.code+"'>"+response.price+"</td>  <td id='stock' ><input type='number' min='0' onclick='subtotal("+response.code+")' value='0' id='quantity"+response.code+"' ></td><td id='total"+response.code+"'></td></tr>");
+           
           }
           
         },
@@ -129,7 +139,10 @@
       
         }
        });
+
   });
+
+  
   function insRow() {
 
 var table = document.getElementById('purchase_table');
@@ -145,15 +158,35 @@ for (var i = 0; i < colCount; i++) {
 
   }
   
-  function subtotal(){
-   a
-     var price = $('#price').val();
-   lert  alert('price');
-            var stock = $('#stock').val();
-            
-            var total = saleprice  * stock;
-            $('#total').val(total);
+  function subtotal($id){
+
+     
+
+
+
+   var qty = $('#quantity'+$id).val();
+
+   var qty = event.target.value;
+   var price = $('#price'+$id).html();
+   var total = qty*price;
+   
+   $("#total"+$id).text(total);
+   
+  let  arr =   $("#grandtotal").text();
+  let sum = parseInt(arr) + parseInt(total);  
+
+  $("#grandtotal").text(sum);
+  alert(sum);
+
+   
+  
+
+   
+
   }
+  
+  
+
 </script>
 
    

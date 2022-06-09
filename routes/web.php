@@ -53,6 +53,7 @@ Route::get('Customer/delete/{id}', 'CustomerController@delete')->name('Customer.
 Route::get('Customer/update/{id}', 'CustomerController@update')->name('Customer.update');
 //Sales 
 Route::get('Sales/create', 'SalesController@create')->name('Sales.create');
+Route::get('Sales/store','SalesController@store')->name('Sales.store');
 Route::get('Sales/index', 'SalesController@index')->name('Sales.index');
 Route::get('Sales/delete/{id}','SalesController@delete')->name('Sales.delete');
 //Ajex call
