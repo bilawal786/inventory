@@ -11,7 +11,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item active">Add New Sales</li>
+                            <li class="breadcrumb-item active">Update New Sales</li>
                         </ol>
                     </div>
                 </div>
@@ -24,7 +24,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Cutomer Detail</h3>
+                        <h3 class="card-title">Update New Sale</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -35,18 +35,15 @@
                             </button>
                         </div>
                     </div>
-                    <form action="{{route('sales.store')}}" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
-                   
-                   
+                    <form action="{{route('sales.update',['id' => $sale->id])}}" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
                     @csrf
-                    
-                    
+                    <!-- /.card-header -->
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Product *</label>
-                                        <select class="form-control  save-data" id="save-data"name="product_id" style="width: 100%;" required>
+                                        <select class="form-control  save-data" id="save-data"name="product_id" style="width: 100%;" >
                                             <option value="">Select Product *</option>
                                            @foreach($products as $row)
                                             <option value="{{$row->id}}">{{$row->name}} ({{$row->code}})</option>
@@ -54,19 +51,7 @@
                                         </select>
                                     </div>    
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Customer</label>
-                                        <select class="form-control" name="customer_id"  style="width: 100%;" required>
-                                            <option value="">Select Customer</option>
-                                           @foreach($customers as $row)
-                                            <option value="{{$row->id}}">{{$row->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>    
-                                </div>
                             </div>
-                            
          
          
                             <div class="row">
@@ -92,18 +77,43 @@
                   </thead>
                   <tbody id='myTable'>
                 
-                  
-                  
-                 
-                 
-                  
-                
-                   
-                    
-                  </tbody>
-                  
- 
+                  <tr id="udata">
+                  <td >
+                       @if(!empty($sale->name))
+                     @foreach(json_decode($sale->name,true) as $data2)
+                     <input  value="{{$data2}} " readonly name="name[]"><br>
+                     @endforeach
+                    @endif
+                    @php $code = json_decode($sale->code,true) @endphp
+                  </td>
+                       <td > 
+                        @if(!empty($sale->price))
+                      @foreach(json_decode($sale->price,true) as $key => $data5)
+                        <input type="text" readonly id="price{{$code[$key]}}" value="{{$data5}}" name="price[]" >
 
+                       <br>
+                        @endforeach
+                     @endif                          
+                                
+                     </td>
+                      <td> 
+                               
+                         @if(!empty($sale->quantity))
+                        @foreach(json_decode($sale->quantity,true) as $key => $data4)
+                        <input type="number" onclick="subtotal({{$code[$key]}})" id="quantity{{$code[$key]}}" class="select" value="{{$data4}}" name="quantity[]"><br>
+                         @endforeach
+                         @endif
+                    </td>
+                         <td>
+                         @if(!empty($sale->subtotal))
+                          @foreach(json_decode($sale->subtotal,true) as $key => $data6)
+                           <input class="gtotal" type="text" id="total{{$code[$key]}}"  readonly value="{{$data6}}" name="subtotal[]"> 
+                          @endforeach
+                        @endif
+                         </td>
+                         <td> <a class='btn btn-danger deletebtn'  > x </a></td>
+                         </tr> 
+                  </tbody> 
                 </table>
               </div>
               <!-- /.card-body -->
@@ -115,14 +125,15 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Grandtotal</label>
-                                        <div id="grdtotal" >
-                                           
+                                        <div  >
+                                        <input type="text" onfocus="focus()"  name="grandtotal" id="grndtotal1" readonly value="{{$row->grandtotal}}">
+                                        
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <input type="hidden" name="grandtotal" id="grndtotal1"> 
-                            <button type="submit" class="btn btn-primary">Add Sale\print</button>
+                            
+                            <button type="submit" class="btn btn-primary">Update Sale</button>
                            
                            
                         </div>
@@ -147,7 +158,7 @@
         success:function(response){
           console.log(response);
           if(response) {
-            $('#myTable').append("<tr><input type='hidden' name='product_id[]' value="+response.id+">  <td>" +response.name+"("+response.stock+")<br>"+response.code+" <input type='hidden' name='stock[]' value="+response.stock+"> <input type='hidden' name='code[]' value="+response.code+"> <input type='hidden' id='nam' value="+response.name+" name='name[]'  ></td><td   id='price"+response.code+"'>"+response.price+"</td> <input type='hidden'  id='pprice' name='price[]' value="+response.price+"> <td id='stock' ><input type='number'  min='1' onclick='subtotal("+response.code+")' value='0' name='quantity[]' id='quantity"+response.code+"' ></td><input type='hidden'  name='subtotal[]'    id='subtotal"+response.code+"'  ><td class='gtotal'  id='total"+response.code+"'>  </td> <td> <a class='btn btn-danger deletebtn'  > x </a> </td> </tr>");
+            $('#myTable').append("<tr><input type='hidden' name='product_id[]' value="+response.id+">  <td>" +response.name+"("+response.stock+")<br>"+response.code+" <input type='hidden' name='stock[]' value="+response.stock+"> <input type='hidden' name='code[]' value="+response.code+"> <input type='hidden' id='nam' value="+response.name+" name='name[]'  ></td><td   > <input type='text' id='price"+response.code+"' class='gtotal' value="+response.price+"> </td> <input type='hidden'  id='pprice' name='price[]' value="+response.price+"> <td id='stock' ><input type='number' min='1' onclick='subtotal("+response.code+")' value='0' name='quantity[]' id='quantity"+response.code+"' ></td><input type='hidden'  name='subtotal[]'    id='subtotal"+response.code+"'  ><td > <input class='gtotal' readonly  id='total"+response.code+"'>  </td> <td> <a class='btn btn-danger deletebtn'  > x </a> </td> </tr>");
           
            
             
@@ -179,16 +190,21 @@ for (var i = 0; i < colCount; i++) {
   }
   
   function subtotal($id){
+    
+   
 
    var qty = $('#quantity'+$id).val();
 
    var qty = event.target.value;
-   var price = $('#price'+$id).html();
+   var price = $('#price'+$id).val();
+
+   
    var total = qty*price;
 
-   $("#total"+$id).text(total);
-
+   $("#total"+$id).val(total);
    $("#subtotal"+$id).val(total);
+   
+
    
   getGrandTotal();
 
@@ -197,20 +213,27 @@ for (var i = 0; i < colCount; i++) {
 function getGrandTotal(){
       var sum = 0;
       $('.gtotal').each(function(){
-          sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText
+          sum += parseFloat($(this).val());  // Or this.innerHTML, this.innerText
       });
-      $("#grdtotal").html(sum);
+     
       $("#grndtotal1").val(sum);
       $("#total").val(sum);
       
-      
-      }
-
+            }
+  
       $("#myTable").on('click', '.deletebtn', function () {
     $(this).closest('tr').remove();
-    subtotal();
 }); 
 
+
+
+$(document).ready(function () {
+    $("#udata").find("input,textarea,select").on('input', function () {
+        
+      
+        
+    });
+});
 getGrandTotal();
 </script>
 

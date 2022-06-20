@@ -173,18 +173,28 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('Sales.index')}}" class="nav-link">
+                        <a href="{{route('sales.index')}}" class="nav-link">
                             <i class=" far fa-circle nav-icon"></i>
-                            <p>sales list</p>
+                            <p>Sales list</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('Sales.create')}}" class="nav-link">
+                        <a href="{{route('sales.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add Sales</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                <a href="{{route('invoice.index')}}" class="nav-link active">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Invoice</p>
+                </a>
+              </li>
+                    
                 </ul>
+
+                
+                
             </li>
           <li class="nav-header">Setting</li>
             <li class="nav-item">

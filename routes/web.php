@@ -52,13 +52,19 @@ Route::post('Customer/store', 'CustomerController@store')->name('Customer.store'
 Route::get('Customer/delete/{id}', 'CustomerController@delete')->name('Customer.delete');
 Route::get('Customer/update/{id}', 'CustomerController@update')->name('Customer.update');
 //Sales 
-Route::get('Sales/create', 'SalesController@create')->name('Sales.create');
-Route::get('Sales/store','SalesController@store')->name('Sales.store');
-Route::get('Sales/index', 'SalesController@index')->name('Sales.index');
-Route::get('Sales/delete/{id}','SalesController@delete')->name('Sales.delete');
+Route::get('sales/create', 'SalesController@create')->name('sales.create');
+Route::get('sales/store','SalesController@store')->name('sales.store');
+Route::get('sales/index', 'SalesController@index')->name('sales.index');
+Route::get('sales/update{id}','SalesController@update')->name('sales.update');
+Route::get('sales/edit/{id}', 'SalesController@edit')->name('sales.edit');
+Route::get('sales/delete/{id}','SalesController@delete')->name('sales.delete');
 //Ajex call
 Route::get('ajax-request/{id}', 'AjaxController@create')->name('create');
 Route::post('ajax-request', [AjaxController::class, 'store']);
+//invoice 
+Route::get('invoice/index','InvoiceController@index')->name('invoice.index');
+Route::get('invoice/print','InvoiceController@create')->name('invoice.print');
+
 
 Route::get('/profile', [
     'uses' => 'ProfileController@profile',
