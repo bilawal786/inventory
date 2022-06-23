@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes(['register' => false]);
+
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth', 'web']], function() {
 Route::get('/', 'HomeController@index')->name('index');
@@ -44,16 +47,16 @@ Route::post('supplier/store', 'SupplierController@store')->name('supplier.store'
 Route::get('supplier/edit/{id}', 'SupplierController@edit')->name('supplier.edit');
 Route::post('supplier/update/{id}','SupplierController@update')->name('supplier.update');
 
-//Customer 
-Route::get('Customer/create' ,'CustomerController@create')->name('Customer.create');
-Route::get('Customer/edit/{id}', 'CustomerController@edit')->name('Customer.edit');
-Route::get('Customer/index', 'CustomerController@index')->name('Customer.index');
-Route::post('Customer/store', 'CustomerController@store')->name('Customer.store');
-Route::get('Customer/delete/{id}', 'CustomerController@delete')->name('Customer.delete');
-Route::get('Customer/update/{id}', 'CustomerController@update')->name('Customer.update');
-//Sales 
+//Customer
+Route::get('customer/create', 'CustomerController@create')->name('customer.create');
+Route::get('customer/edit/{id}', 'CustomerController@edit')->name('customer.edit');
+Route::get('customer/index', 'CustomerController@index')->name('customer.index');
+Route::post('customer/store', 'CustomerController@store')->name('customer.store');
+Route::get('customer/delete/{id}', 'CustomerController@delete')->name('customer.delete');
+Route::get('customer/update/{id}', 'CustomerController@update')->name('customer.update');
+//Sales
 Route::get('sales/create', 'SalesController@create')->name('sales.create');
-Route::get('sales/store','SalesController@store')->name('sales.store');
+Route::post('sales/store','SalesController@store')->name('sales.store');
 Route::get('sales/index', 'SalesController@index')->name('sales.index');
 Route::get('sales/update{id}','SalesController@update')->name('sales.update');
 Route::get('sales/edit/{id}', 'SalesController@edit')->name('sales.edit');
@@ -61,7 +64,7 @@ Route::get('sales/delete/{id}','SalesController@delete')->name('sales.delete');
 //Ajex call
 Route::get('ajax-request/{id}', 'AjaxController@create')->name('create');
 Route::post('ajax-request', [AjaxController::class, 'store']);
-//invoice 
+//invoice
 Route::get('invoice/index','InvoiceController@index')->name('invoice.index');
 Route::get('invoice/print','InvoiceController@create')->name('invoice.print');
 
@@ -158,6 +161,4 @@ Route::post('/lead/search', [
 
 });
 
-Auth::routes(['register' => false]);
 
-Route::get('/home', 'HomeController@index')->name('home');

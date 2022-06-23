@@ -10,9 +10,10 @@ use App\Product;
 class SalesController extends Controller
 {
     public function index(){
+
         $customers = Customer::where('status', '1')->get();
         $sale= Sales::all();
-        
+
         return view('admin.sales.index', compact('customers','sale'));
     }
    public function create(){
@@ -21,12 +22,12 @@ class SalesController extends Controller
     $products = Product::where('status', '1')->get();
        return view('admin.sales.create', compact('products','customers'));
    }
-   
+
     public function store(Request $request){
         $products = Product::where('status', '1')->first();
        $customer = Customer::where('status', '1')->where('id', $request->customer_id)->first();
-       
-        $sale = new Sales();   
+
+        $sale = new Sales();
 
         foreach($request->name as $name)
         {
@@ -57,7 +58,7 @@ class SalesController extends Controller
             $data[]=$quantity;
             $sale->quantity=json_encode($data);
         }
-        
+
         foreach($request->code as $code)
         {
             $data7[]=$code;
@@ -69,32 +70,32 @@ class SalesController extends Controller
             $sale->subtotal=json_encode($data8);
         };
         $sale->grandtotal=$request->grandtotal;
-      
-        
-     
+
+
+
         $sale->save();
         $notification = array(
             'messege' => 'Sale add Successfully!',
             'alert-type' => 'success'
         );
-       
-        
+
+
        return view('admin.invoice.index' , compact('customer','sale'))->with($notification);;
-        
-       
-        
-    
+
+
+
+
    }
    public function update(Request $request ,$id){
-    
+
     $sale = Sales::find($id);
-  
+
     foreach($request->name as $name)
     {
             $data2[]=$name;
             $sale->name=json_encode($data2);
         }
-        
+
         foreach($request->stock as $stock)
         {
             $data3[]=$stock;
@@ -117,14 +118,14 @@ class SalesController extends Controller
             $data[]=$quantity;
             $sale->quantity=json_encode($data);
         }
-        
+
         foreach($request->code as $code)
         {
             $data7[]=$code;
             $sale->code=json_encode($data7);
         }
         $sale->grandtotal=$request->grandtotal;
-        
+
         $sale->save();
 
         $notification = array(
@@ -133,8 +134,8 @@ class SalesController extends Controller
         );
         return Redirect()->route('sales.index')->with($notification);
     }
-    
-    
+
+
     public function edit($id){
             $products = Product::where('status', '1')->get();
             $sale=Sales::find($id);
@@ -150,8 +151,8 @@ class SalesController extends Controller
         );
         return redirect()->back()->with($notification);
 }
-  
+
 
 }
-  
+
 

@@ -33,8 +33,8 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-  
-                            <form action="{{route('Customer.update',['id'=>$customer->id]) }}"  method="get">
+
+                            <form action="{{route('customer.update',['id'=>$customer->id]) }}"  method="get">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
