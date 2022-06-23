@@ -7,11 +7,13 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index(){
+
         $customers = Customer::where('status', '1')->get();
-        return view('admin.Customer.index', compact('customers'));
+        return view('admin.customer.index', compact('customers'));
     }
     public function create(){
-        return view('admin.Customer.create');
+
+        return view('admin.customer.create');
     }
     public function store(Request $request){
         $customer = new Customer();
@@ -41,13 +43,14 @@ class CustomerController extends Controller
 
     }
     public function edit($id){
-       
+
         $customer = Customer::where('status', '1')->where('id','=',$id)->first();
-        
-        return view('admin.Customer.edit', compact('customer'));
+
+        return view('admin.customer.edit', compact('customer'));
     }
 
     public function update(Request $request,$id){
+
         $customer = Customer::find($id);
         $customer->name =$request->name;
         $customer->email = $request->email;
@@ -61,7 +64,7 @@ class CustomerController extends Controller
             'message'=> 'Customer Delete Successfully',
             'alert-type'=>'error'
         );
-        return redirect()->route('Customer.index');
+        return redirect()->route('customer.index');
 
     }
 

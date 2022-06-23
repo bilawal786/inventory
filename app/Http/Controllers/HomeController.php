@@ -43,13 +43,13 @@ class HomeController extends Controller
     }
 
     public function app_update(Request $request) {
-        
+
         $app = Apperance::first();
         $app->name = $request->name;
         if($request->hasfile('image'))
-                  {     
+                  {
                     if(!empty($app->image)){
-                        $image_path=$profile->image;
+                        $image_path=$request->image;
                         unlink($image_path);
                       }
                         $image = $request->file('image');
@@ -58,10 +58,10 @@ class HomeController extends Controller
                         $image->move($destinationPath, $name);
                         $app->logo='profile_images/'.$name;
 
-                  }
+                         }
 
-      $app->save();
-      $notification=array(
+                    $app->save();
+                     $notification=array(
                         'messege'=>'Apperance Updated Successfully!',
                         'alert-type'=>'success'
                          );

@@ -1,5 +1,5 @@
 <!-- Main Sidebar Container -->
-  
+
 @php
       $app=App\Apperance::first();
 
@@ -148,13 +148,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('Customer.index')}}" class="nav-link">
+                        <a href="{{route('customer.index')}}" class="nav-link">
                             <i class=" far fa-circle nav-icon"></i>
                             <p>Customers List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('Customer.create')}}" class="nav-link">
+                        <a href="{{route('customer.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add Customer</p>
                         </a>
@@ -190,11 +190,11 @@
                   <p>Invoice</p>
                 </a>
               </li>
-                    
+
                 </ul>
 
-                
-                
+
+
             </li>
           <li class="nav-header">Setting</li>
             <li class="nav-item">
