@@ -48,20 +48,20 @@ Route::get('supplier/edit/{id}', 'SupplierController@edit')->name('supplier.edit
 Route::post('supplier/update/{id}','SupplierController@update')->name('supplier.update');
 
 //Customer
-Route::get('customer/create', 'CustomerController@create')->name('customer.create');
-Route::get('customer/edit/{id}', 'CustomerController@edit')->name('customer.edit');
-Route::get('customer/index', 'CustomerController@index')->name('customer.index');
-Route::post('customer/store', 'CustomerController@store')->name('customer.store');
-Route::get('customer/delete/{id}', 'CustomerController@delete')->name('customer.delete');
-Route::get('customer/update/{id}', 'CustomerController@update')->name('customer.update');
+Route::get('customer/create', 'CustomerController@create')->name('admin.customer.create');
+Route::get('customer/edit/{id}', 'CustomerController@edit')->name('admin.customer.edit');
+Route::get('customer/index', 'CustomerController@index')->name('admin.customer.index');
+Route::post('customer/store', 'CustomerController@store')->name('admin.customer.store');
+Route::get('customer/delete/{id}', 'CustomerController@delete')->name('admin.customer.delete');
+Route::get('customer/update/{id}', 'CustomerController@update')->name('admin.customer.update');
 //Sales
-Route::get('sales/create', 'SalesController@create')->name('sales.create');
-Route::post('sales/store','SalesController@store')->name('sales.store');
-Route::get('sales/index', 'SalesController@index')->name('sales.index');
-Route::get('sales/update{id}','SalesController@update')->name('sales.update');
-Route::get('sales/edit/{id}', 'SalesController@edit')->name('sales.edit');
-Route::get('sales/delete/{id}','SalesController@delete')->name('sales.delete');
-//Ajex call
+Route::get('sales/create', 'SalesController@create')->name('admin.sales.create');
+Route::post('sales/store','SalesController@store')->name('admin.sales.store');
+Route::get('sales/index', 'SalesController@index')->name('admin.sales.index');
+Route::get('sales/update{id}','SalesController@update')->name('admin.sales.update');
+Route::get('sales/edit/{id}', 'SalesController@edit')->name('admin.sales.edit');
+Route::get('sales/delete/{id}','SalesController@delete')->name('admin.sales.delete');
+//ajex call
 Route::get('ajax-request/{id}', 'AjaxController@create')->name('create');
 Route::post('ajax-request', [AjaxController::class, 'store']);
 //invoice
