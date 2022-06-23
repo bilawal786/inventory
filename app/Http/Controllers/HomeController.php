@@ -41,7 +41,6 @@ class HomeController extends Controller
         $app= Apperance::first();
         return view('admin.setting.apperance' , compact('app'));
     }
-
     public function app_update(Request $request) {
 
         $app = Apperance::first();
