@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Customer;
 use App\Supplier;
 use Illuminate\Http\Request;
 
 class SupplierController extends Controller
 {
+
+ public function index2(){
+
+    $customers = Customer::where('status', '1')->get();
+    return view('admin.customer.index', compact('customers'));
+}
+
     public function index(){
         $suppliers = Supplier::where('status', '1')->get();
         return view('admin.supplier.index', compact('suppliers'));
@@ -42,16 +50,16 @@ class SupplierController extends Controller
 
 
     public function edit($id){
-        
+
         $suppliers = Supplier::where('id', $id)->get();
         $supplier =Supplier::find($id);
-        
+
         return view('admin.supplier.edit',compact('supplier','suppliers'));
     }
 
 
     public function update(Request $request ,$id){
-     
+
         $supplier=Supplier::find($id);
         $supplier->name=$request->name;
         $supplier->email=$request->email;
@@ -60,7 +68,7 @@ class SupplierController extends Controller
         $supplier->city=$request->city;
         $supplier->notes=$request->notes;
         $supplier->save();
-        
+
         $notification = array(
             'messege' => 'Product Update Successfully!',
             'alert-type' => 'success'

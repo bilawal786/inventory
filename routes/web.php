@@ -50,7 +50,7 @@ Route::post('supplier/update/{id}','SupplierController@update')->name('supplier.
 //Customer
 Route::get('customer/create', 'CustomerController@create')->name('customer.create');
 Route::get('customer/edit/{id}', 'CustomerController@edit')->name('customer.edit');
-Route::get('customer/index', 'CustomerController@index')->name('customer.index');
+Route::get('customer/index', 'SupplierController@index2')->name('customer.index');
 Route::post('customer/store', 'CustomerController@store')->name('customer.store');
 Route::get('customer/delete/{id}', 'CustomerController@delete')->name('customer.delete');
 Route::get('customer/update/{id}', 'CustomerController@update')->name('customer.update');
