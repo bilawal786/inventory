@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="content-wrapper">
+    <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="container-fluid">
@@ -34,7 +34,7 @@
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form action="{{route('admin.customer.update',['id'=>$customer->id]) }}"  method="get">
+                            <form action="{{route('customer.update',['id'=>$customer->id]) }}"  method="get">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">
