@@ -55,7 +55,7 @@ class CustomerController extends Controller
             'message'=> 'Customer Delete Successfully',
             'alert-type'=>'error'
         );
-        return redirect()->route('admin.customer.index');
+        return redirect()->route('customer.index');
 
     }
 

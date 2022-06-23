@@ -132,7 +132,7 @@ class SalesController extends Controller
             'messege' => 'sales Update Successfully!',
             'alert-type' => 'success'
         );
-        return Redirect()->route('admin.sales.index')->with($notification);
+        return Redirect()->route('sales.index')->with($notification);
     }
 
 
