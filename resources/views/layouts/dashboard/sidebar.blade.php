@@ -148,13 +148,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('customer.index')}}" class="nav-link">
+                        <a href="{{route('admin.customer.index')}}" class="nav-link">
                             <i class=" far fa-circle nav-icon"></i>
                             <p>Customers List</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('customer.create')}}" class="nav-link">
+                        <a href="{{route('admin.customer.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add Customer</p>
                         </a>
@@ -173,13 +173,13 @@
                 </a>
                 <ul class="nav nav-treeview">
                     <li class="nav-item">
-                        <a href="{{route('sales.index')}}" class="nav-link">
+                        <a href="{{route('admin.sales.index')}}" class="nav-link">
                             <i class=" far fa-circle nav-icon"></i>
                             <p>Sales list</p>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{route('sales.create')}}" class="nav-link">
+                        <a href="{{route('admin.sales.create')}}" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Add Sales</p>
                         </a>

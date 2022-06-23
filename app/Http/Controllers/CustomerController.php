@@ -16,6 +16,7 @@ class CustomerController extends Controller
         return view('admin.customer.create');
     }
     public function store(Request $request){
+
         $customer = new Customer();
         $customer->name = $request->name;
         $customer->phone = $request->phone;
@@ -64,7 +65,7 @@ class CustomerController extends Controller
             'message'=> 'Customer Delete Successfully',
             'alert-type'=>'error'
         );
-        return redirect()->route('customer.index');
+        return redirect()->route('admin.customer.index');
 
     }
 

@@ -35,7 +35,7 @@
                             </button>
                         </div>
                     </div>
-                    <form action="{{route('sales.store')}}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form action="{{route('admin.sales.store')}}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
 
 
                     @csrf

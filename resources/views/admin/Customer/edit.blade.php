@@ -34,7 +34,7 @@
                             <!-- /.card-header -->
                             <!-- form start -->
 
-                            <form action="{{route('customer.update',['id'=>$customer->id]) }}"  method="get">
+                            <form action="{{route('admin.customer.update',['id'=>$customer->id]) }}"  method="get">
                                 @csrf
                                 <div class="card-body">
                                     <div class="row">

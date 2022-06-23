@@ -35,7 +35,7 @@
                             </button>
                         </div>
                     </div>
-                    <form action="{{route('sales.update',['id' => $sale->id])}}" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form action="{{route('admin.sales.update', ['id' => $sale->id])}}" method="get" accept-charset="UTF-8" enctype="multipart/form-data">
                     @csrf
                     <!-- /.card-header -->
                         <div class="card-body">
@@ -52,8 +52,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                             <div class="row">
 
                             <div class="col-md-10">
@@ -81,7 +79,7 @@
                                       <td >
                                            @if(!empty($sale->name))
                                          @foreach(json_decode($sale->name,true) as $data2)
-                                         <input  value="{{$data2}} " readonly name="name[]"><br>
+                                         <input  value="{{$data2}}" readonly name="name[]"><br>
                                          @endforeach
                                         @endif
                                         @php $code = json_decode($sale->code,true) @endphp
@@ -89,8 +87,7 @@
                                            <td >
                                             @if(!empty($sale->price))
                                           @foreach(json_decode($sale->price,true) as $key => $data5)
-                                            <input type="text" readonly id="price{{$code[$key]}}" value="{{$data5}}" name="price[]" >
-
+                                            <input type="text"   id="price{{$code[$key]}}" value="{{$data5}}" name="price[]" >
                                            <br>
                                             @endforeach
                                          @endif
@@ -107,7 +104,7 @@
                                              <td>
                                              @if(!empty($sale->subtotal))
                                               @foreach(json_decode($sale->subtotal,true) as $key => $data6)
-                                               <input class="gtotal" type="text" id="total{{$code[$key]}}"  readonly value="{{$data6}}" name="subtotal[]">
+                                               <input  class="gtotal"  type="text" id="total{{$code[$key]}}"  readonly value="{{$data6}}" name="subtotal[]" >
                                               @endforeach
                                             @endif
                                              </td>
@@ -132,7 +129,7 @@
                                 </div>
                             </div>
 
-</div>
+                            </div>
                         </div>
                     </form>
                     <!-- /.card -->

@@ -29,7 +29,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title"></h3>
-                                <a href="{{route('customer.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>  Add New Customer</a>
+                                <a href="{{route('admin.customer.create')}}" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>  Add New Customer</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -57,11 +57,11 @@
                                             <td>{{$row->address}}</td>
 
                                             <td>
-                                                <a href="{{route('customer.edit', ['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
+                                                <a href="{{route('admin.customer.edit', ['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
                                                     <i class="fa fa-pen"></i>
                                                 </a>
 
-                                                <a href="{{route('customer.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">
+                                                <a href="{{route('admin.customer.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">
                                                     <i class="fa fa-times"></i>
                                                 </a>
                                             </td>
