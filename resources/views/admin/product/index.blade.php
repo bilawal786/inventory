@@ -42,6 +42,7 @@
                                         <th>Category</th>
                                         <th>Stock</th>
                                         <th>Price</th>
+                                        <th>Description</th>
                                         <th>Unit</th>
                                         <th style="width: 90px;">Action</th>
                                     </tr>
@@ -59,6 +60,7 @@
                                                 <td>{{$row->category->name}}</td>
                                                 <td>{{$row->stock}}</td>
                                                 <td>{{$row->price}}</td>
+                                                <td>{!! $row->description !!}</td>
                                                 <td>{{$row->unit}}</td>
                                                 <td>
                                                     <a href="{{route('product.edit',['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">

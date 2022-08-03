@@ -28,37 +28,31 @@ class SalesController extends Controller
        $customer = Customer::where('status', '1')->where('id', $request->customer_id)->first();
 
         $sale = new Sales();
-
         foreach($request->name as $name)
         {
             $data2[]=$name;
             $sale->name=json_encode($data2);
         }
-
         foreach($request->stock as $stock)
         {
             $data3[]=$stock;
             $sale->stock=json_encode($data3);
         }
-
         foreach($request->product_id as $product_id)
         {
             $data4[]=$product_id;
             $sale->product_id=json_encode($data4);
         }
-
         foreach($request->price as $price)
         {
             $data5[]=$price;
             $sale->price=json_encode($data5);
         }
-
         foreach($request->quantity as $quantity)
         {
             $data[]=$quantity;
             $sale->quantity=json_encode($data);
         }
-
         foreach($request->code as $code)
         {
             $data7[]=$code;
@@ -70,9 +64,6 @@ class SalesController extends Controller
             $sale->subtotal=json_encode($data8);
         };
         $sale->grandtotal=$request->grandtotal;
-
-
-
         $sale->save();
         $notification = array(
             'messege' => 'Sale add Successfully!',
@@ -82,20 +73,16 @@ class SalesController extends Controller
 
        return view('admin.invoice.index' , compact('customer','sale'))->with($notification);;
 
-
-
-
    }
    public function update(Request $request ,$id){
 
     $sale = Sales::find($id);
 
     foreach($request->name as $name)
-    {
+        {
             $data2[]=$name;
             $sale->name=json_encode($data2);
         }
-
         foreach($request->stock as $stock)
         {
             $data3[]=$stock;
@@ -106,19 +93,16 @@ class SalesController extends Controller
             $data4[]=$product_id;
             $sale->product_id=json_encode($data4);
         }
-
         foreach($request->price as $price)
         {
             $data5[]=$price;
             $sale->price=json_encode($data5);
         }
-
         foreach($request->quantity as $quantity)
         {
             $data[]=$quantity;
             $sale->quantity=json_encode($data);
         }
-
         foreach($request->code as $code)
         {
             $data7[]=$code;
@@ -133,15 +117,12 @@ class SalesController extends Controller
             'alert-type' => 'success'
         );
         return Redirect()->route('sales.index')->with($notification);
-    }
-
-
+        }
     public function edit($id){
             $products = Product::where('status', '1')->get();
             $sale=Sales::find($id);
             return view('admin.sales.edit', compact('sale','products'));
-}
-
+            }
     public function delete($id){
         $sale = Sales::find($id);
         $sale->delete();
@@ -150,7 +131,16 @@ class SalesController extends Controller
             'alert-type' => 'error'
         );
         return redirect()->back()->with($notification);
-}
+        }
+        public function view($id){
+
+            $sale=Sales::find($id);
+            $customer = Customer::where('status', '1')->get();
+            $products =Product::where('status','1')->get();
+            return view('admin.sales.show' , compact('customer','sale','products'));
+
+
+        }
 
 
 }

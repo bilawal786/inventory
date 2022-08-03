@@ -44,7 +44,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>Product Name *</label>
-                                    <input type="text" name="name" required class="form-control" >
+                                    <input type="text" name="name" required class="form-control " >
                                 </div>
                                 <!-- /.form-group -->
                                 <div class="form-group">

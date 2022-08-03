@@ -1,8 +1,6 @@
 @extends('layouts.admin')
 
 @section('content')
-
-
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -19,7 +17,6 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -33,7 +30,6 @@
                             </div>
                             <!-- /.card-header -->
                             <!-- form start -->
-
                             <form action="{{route('customer.update',['id'=>$customer->id]) }}"  method="get">
                                 @csrf
                                 <div class="card-body">
@@ -74,22 +70,15 @@
                                                 <textarea class="form-control" name="notes" id="" cols="30" rows="6" value="{{$customer->notes}}"></textarea>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
-
                                 <div class="card-footer">
                                     <button type="submit" class="btn btn-primary">Submit</button>
                                 </div>
                             </form>
                         </div>
                         <!-- /.card -->
-
-
-
-
-
                     </div>
                     <!--/.col (right) -->
                 </div>

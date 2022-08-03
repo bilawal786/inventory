@@ -37,73 +37,47 @@
                                     <thead>
                                     <tr>
                                         <th>Product code</th>
-                                        <th>Product Name</th>
-                                        <th>Product Stock</th>
-                                        <th>Quantity</th>
-                                        <th>Sale Price</th>
-                                        <th>Subtotal </th>
-                                        <th>Grand Total </th>
+                                        <th>Customer Name</th>
+                                        <th>Invoice Date</th>
+                                        <th>Grand Total</th>
                                         <th style="width: 90px;">Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
+
                                     @foreach($sale as $row)
+
                                         <tr>
 
                                             <td>
                                                 @if(!empty($row->code))
+
                                                     @foreach(json_decode($row->code,true) as $data1)
                                                         {{$data1}} ,
                                                     @endforeach
                                                 @endif
                                             </td>
+                                            @foreach($customers as $rows)
+                                            <td>{{$rows->name}}</td>
+                                            @endforeach
                                             <td>
-                                                @if(!empty($row->name))
-                                                    @foreach(json_decode($row->name,true) as $data2)
-                                                        {{$data2}},
-                                                    @endforeach
-                                                @endif
+                                                {{$row->created_at}}
                                             </td>
-                                            <td>
-                                                @if(!empty($row->stock))
-                                                    @foreach(json_decode($row->stock,true) as $data3)
-                                                        {{$data3}} ,
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if(!empty($row->quantity))
-                                                    @foreach(json_decode($row->quantity,true) as $data4)
-                                                        {{$data4}} ,
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if(!empty($row->price))
-                                                    @foreach(json_decode($row->price,true) as $data5)
-                                                        {{$data5}} ,
-                                                    @endforeach
-                                                @endif
-                                            </td>
-                                            <td>
-                                                @if(!empty($row->subtotal))
-                                                    @foreach(json_decode($row->subtotal,true) as $data6)
-                                                        {{$data6}} ,
-                                                    @endforeach
-                                                @endif
-                                            </td>
+
                                             <td>
                                                 {{$row->grandtotal}}
                                             </td>
-
-
                                             <td>
-                                                <a href="{{route('sales.edit', ['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
 
+                                                <a href="{{route('sales.edit', ['id' => $row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
+                                                    <i class="fa fa-pen"></i>
                                                 </a>
 
                                                 <a href="{{route('sales.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">
                                                     <i class="fa fa-times"></i>
+                                                </a>
+                                                <a href="{{route('sales.view',['id'=>$row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip"  title="view">
+                                                    <i class="fa fa-eye"></i>
                                                 </a>
                                         </tr>
                                     @endforeach

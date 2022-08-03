@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 class CustomerController extends Controller
 {
     public function index(){
-
         $customers = Customer::where('status', '1')->get();
         return view('admin.customer.index', compact('customers'));
     }

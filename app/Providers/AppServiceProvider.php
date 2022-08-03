@@ -2,7 +2,6 @@
 
 namespace App\Providers;
 use Illuminate\Support\Facades\Schema;
-
 use Illuminate\Support\ServiceProvider;
 use App\Apperance;
 
@@ -25,9 +24,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-      // Schema::defaultStringLength(191);
+       Schema::defaultStringLength(191);
 
-        
+
       //   if(!empty($app)){
       //   view()->share('siteTitle', $app->name);
       //   view()->share('sitelogo', $app->logo);
@@ -37,5 +36,5 @@ class AppServiceProvider extends ServiceProvider
       //   view()->share('sitelogo', 'assets/dist/img/AdminLTELogo.png');
       // }
     }
-    
+
 }
