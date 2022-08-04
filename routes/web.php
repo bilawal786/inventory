@@ -69,8 +69,43 @@ Route::post('ajax-request', [AjaxController::class, 'store']);
 Route::get('invoice/index','InvoiceController@index')->name('invoice.index');
 Route::get('invoice/print','InvoiceController@create')->name('invoice.print');
 
+//expences
+    Route::get('expence/index','ExpenceController@index')->name('expence.index');
+    Route::get('expence/category','ExpenceController@category')->name('expence.category');
+    Route::get('expence/create','ExpenceController@create')->name('expence.create');
+    Route::post('expence/store','ExpenceController@store')->name('expence.store');
+    Route::get('expence/edit/{id}','ExpenceController@edit')->name('expence.edit');
+    Route::get('expence/delete/{id}','ExpenceController@delete')->name('expence.delete');
+    Route::get('expence/update/{id}','ExpenceController@update')->name('expence.update');
 
-Route::get('/profile', [
+
+    //income
+    Route::get('income/index','IncomeController@index')->name('income.index');
+    Route::get('income/category','IncomeController@category')->name('income.category');
+    Route::get('income/create','IncomeController@create')->name('income.create');
+    Route::post('income/store','IncomeController@store')->name('income.store');
+    Route::get('income/update/{id}','IncomeController@update')->name('income.update');
+    Route::get('income/edit/{id}','IncomeController@edit')->name('income.edit');
+    Route::get('income/delete/{id}','IncomeController@delete')->name('income.delete');
+
+    Route::post('category/store','CategorController@store')->name('categor.store');
+    Route::post('category/stores','CategorController@stores')->name('categor.stores');
+
+    Route::get('categor/category','CategorController@index')->name('categor.index');
+    Route::get('categor/delete/{id}','CategorController@delete')->name('categor.delete');
+    Route::get('categor/edit/{id}','CategorController@edit')->name('categor.edit');
+    Route::get('categor/update/{id}','CategorController@update')->name('categor.update');
+
+
+
+
+
+
+
+
+
+
+    Route::get('/profile', [
     'uses' => 'ProfileController@profile',
     'as' => 'profile'
 ]);

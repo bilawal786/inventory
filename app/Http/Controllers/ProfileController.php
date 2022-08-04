@@ -16,14 +16,14 @@ class ProfileController extends Controller
     public function profile() {
     	return view ('admin.setting.profile');
     }
-    
+
     public function profile_update(Request $request) {
-    	
+
     	$user = User::find($request->id);
     	$user->email = $request->email;
     	$user->name = $request->name;
     	if($request->hasfile('image'))
-                  {     
+                  {
                     if(!empty($profile->image)){
                         $image_path=$profile->image;
                         unlink($image_path);
@@ -38,8 +38,8 @@ class ProfileController extends Controller
 
       $user->save();
       $notification=array(
-                        'messege'=>'Profile Updated Successfully!',
-                        'alert-type'=>'success'
+          'messege'=>'Profile Updated Successfully!',
+          'alert-type'=>'success'
                          );
       return Redirect()->back()->with($notification);
     }
