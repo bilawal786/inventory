@@ -37,7 +37,7 @@
                                     <thead>
                                     <tr>
 
-                                        <th>User-Id</th>
+                                        <th>Sr No</th>
                                         <th>Category</th>
                                         <th>Income Date</th>
                                         <th>Income Price</th>
@@ -48,8 +48,8 @@
                                     @foreach($incomes as $row)
                                         <tr>
 
-                                            <td>{{$row->user_id}}</td>
-                                            <td>{{$row->category_id}}</td>
+                                            <td>{{$row->id}}</td>
+                                            <td>{{$row->category->name}}</td>
                                             <td>{{$row->date}}</td>
                                             <td>{{$row->price}}</td>
 {{--                                            <td>--}}

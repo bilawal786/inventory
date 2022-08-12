@@ -15,11 +15,11 @@ class IncomeController extends Controller
         return view('admin.income.index',compact('incomes'));
     }
     public function category(){
-        $catego=Categor::all();
+        $catego=Categor::where('types','income')->get();
         return view('admin.income.category',compact('catego'));
     }
     public function create(){
-        $category=Categor::where('name','income')->get();
+        $category=Categor::where('types','income')->get();
         return view('admin.income.create',compact('category'));
     }
     public function store(Request $request){
@@ -53,7 +53,7 @@ class IncomeController extends Controller
     }
     public function edit($id){
             $incomeedit=Income::find($id);
-            $categoryes=Categor::where('name','income')->get();
+            $categoryes=Categor::where('types','income')->get();
             return view('admin.income.edit',compact('incomeedit','categoryes'));
     }
     public function delete($id){

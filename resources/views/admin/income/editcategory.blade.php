@@ -18,7 +18,6 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -31,15 +30,13 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <label  >Expences</label>
-
-
+                                            <label >Income</label>
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Category Name *</label>
-                                                <input  type="text" class="form-control" name="types" value="" required="">
+                                                <input  type="text" class="form-control" name="name" value="{{$editcate->name}}" required="">
+                                                <input type="hidden" value="income" name="types">
                                             </div>
                                         </div>
-
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>

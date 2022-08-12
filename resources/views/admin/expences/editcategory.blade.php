@@ -32,14 +32,12 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label  >Expences</label>
-
-
                                             <div class="form-group">
                                                 <label for="exampleInputEmail1">Category Name *</label>
-                                                <input  type="text" class="form-control" name="types" value="" required="">
+                                                <input  type="text" class="form-control" name="name" value="{{$editcate->name}}" required="">
+                                                <input type="hidden" value="expence" name="types">
                                             </div>
                                         </div>
-
                                     </div>
                                     <button type="submit" class="btn btn-primary">Save changes</button>
                                 </div>

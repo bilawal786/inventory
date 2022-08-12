@@ -16,7 +16,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
 
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css">
+
+    <link rel="stylesheet" type="text/css" href="{{asset('cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.css')}}">
 </head>
 <body class="hold-transition login-page">
 
@@ -28,9 +29,13 @@
 <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 <!-- AdminLTE App -->
 <script src="{{asset('assets/dist/js/adminlte.min.js')}}"></script>
+<script src="{{asset('ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js')}}"></script>
+
+<script src="{{asset('cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js')}}" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+<script type="text/javascript" src="{{asset('cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js')}}"></script>
 <script>
         @if(Session::has('messege'))
           var type="{{Session::get('alert-type','info')}}"
@@ -50,7 +55,6 @@
           }
         @endif
      </script>
-
 </body>
 </html>
 

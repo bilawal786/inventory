@@ -89,12 +89,15 @@ Route::get('invoice/print','InvoiceController@create')->name('invoice.print');
     Route::get('income/delete/{id}','IncomeController@delete')->name('income.delete');
 
     Route::post('category/store','CategorController@store')->name('categor.store');
-    Route::post('category/stores','CategorController@stores')->name('categor.stores');
-
     Route::get('categor/category','CategorController@index')->name('categor.index');
     Route::get('categor/delete/{id}','CategorController@delete')->name('categor.delete');
     Route::get('categor/edit/{id}','CategorController@edit')->name('categor.edit');
     Route::get('categor/update/{id}','CategorController@update')->name('categor.update');
+
+    Route::get('report/index','ReportController@index')->name('report.index');
+    Route::get('report/search/','ReportController@search')->name('report.search');
+
+
 
 
 

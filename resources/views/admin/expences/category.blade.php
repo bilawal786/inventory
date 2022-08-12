@@ -38,7 +38,7 @@
                                     <tr>
                                         <th>Id</th>
                                         <th>Name</th>
-                                        <th>Category types</th>
+
                                         <th style="width: 90px;">Action</th>
                                     </tr>
                                     </thead>
@@ -47,7 +47,7 @@
                                         <tr>
                                             <td>{{$row->id}}</td>
                                             <td>{{$row->name}}</td>
-                                            <td>{{$row->types}}</td>
+
                                             <td>
                                                 <a href="{{route('categor.edit',['id'=>$row->id])}}" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
                                                     <i class="fa fa-pen"></i>
@@ -79,36 +79,38 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h4 class="modal-title">Add New Category</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" id="" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('categor.store')}}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form action="{{route('categor.store')}}" id="send" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <label  >Expences</label>
-
-
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Category Name *</label>
-                                        <input  type="text" class="form-control" name="types" required="">
+                                        <input  type="text" class="form-control" name="name" required="">
+                                        <input  type="hidden"  name="types" value="expence">
                                     </div>
                                 </div>
 
                             </div>
                         </div>
                         <!-- /.card-body -->
-                <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                        <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-default" id="btnTest" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" value="Save changes"  >
+                        </div>
+                    </form>
                 </div>
-                </form>
-            </div>
             <!-- /.modal-content -->
+            </div>
         </div>
         <!-- /.modal-dialog -->
     </div>
+
 @endsection
+

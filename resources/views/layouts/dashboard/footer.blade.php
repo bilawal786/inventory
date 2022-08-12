@@ -11,7 +11,6 @@
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->
-</div>
 <!-- ./wrapper -->
 
 <!-- jQuery -->
@@ -64,8 +63,8 @@
  <!-- dropzonejs -->
  <script src="{{asset('assets/plugins/dropzone/min/dropzone.min.js')}}"></script>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="{{asset('cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js')}}"></script>
+<script src="{{asset('unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 <script>
         @if(Session::has('messege'))
           var type="{{Session::get('alert-type','info')}}"
@@ -153,6 +152,12 @@
              theme: 'bootstrap4'
          })
      })
+ </script>
+ <script>
+     $('input[type=submit]').click(function() {
+         $(this).attr('disabled', 'disabled');
+         $(this).parents('form').submit();
+     });
  </script>
  @yield('script')
 </body>

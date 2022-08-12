@@ -1,5 +1,4 @@
 @extends('layouts.admin')
-
 @section('content')
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -17,7 +16,6 @@
                 </div>
             </div><!-- /.container-fluid -->
         </section>
-
         <!-- Main content -->
         <section class="content">
             <div class="container-fluid">
@@ -45,9 +43,8 @@
                                         <label>Category *</label>
                                         <select class="form-control select2" name="category_id" style="width: 100%;" >
                                             <option value="">Select category *</option>
-
                                             @foreach($categoryes as $row)
-                                                <option value="{{$row->id}}" {{ $row->id == $row->id  ? 'selected' : '' }}>{{$row->types}}</option>
+                                                <option value="{{$row->id}}" {{ $row->id == $row->id  ? 'selected' : '' }}>{{$row->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

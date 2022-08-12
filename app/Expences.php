@@ -2,14 +2,14 @@
 
 namespace App;
 
-use App\Category;
+use App\Categor;
 use Illuminate\Database\Eloquent\Model;
 
 
 class Expences extends Model
 {
-    public function categorys()
+    public function category()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Categor::class );
     }
 }

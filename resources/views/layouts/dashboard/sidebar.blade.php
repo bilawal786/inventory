@@ -182,13 +182,6 @@
                             <p>Add Sales</p>
                         </a>
                     </li>
-{{--                    <li class="nav-item">--}}
-{{--                <a href="{{route('invoice.index')}}" class="nav-link active">--}}
-{{--                  <i class="far fa-circle nav-icon"></i>--}}
-{{--                  <p>Invoice</p>--}}
-{{--                </a>--}}
-{{--              </li>--}}
-
                 </ul>
             <li class="nav-item">
                 <a href="#" class="nav-link">
@@ -220,9 +213,10 @@
 
                 </ul>
             </li>
+
             <li class="nav-item">
                 <a href="#" class="nav-link">
-                    <i class="nav-icon fa fa-cash-register" aria-hidden="true"></i>
+                    <i class="nav-icon fa fa-money-bill" aria-hidden="true"></i>
                     <p>
                         Incomes
                         <i class="fas fa-angle-left right"></i>
@@ -247,10 +241,29 @@
                             <p>Income lists</p>
                         </a>
                     </li>
-
                 </ul>
-
             </li>
+
+            <li class="nav-item">
+                <a href="" class="nav-link">
+                    <i class="nav-icon fa fa-money-bill" aria-hidden="true"></i>
+                    <p>
+                        Report
+                        <i class="fas fa-angle-left right"></i>
+                    </p>
+                </a>
+                <ul class="nav nav-treeview">
+                    <li class="nav-item">
+                        <a href="{{route('report.index')}}" class="nav-link">
+                            <i class=" far fa-circle nav-icon"></i>
+                            <p>Income/expence</p>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+
+
           <li class="nav-header">Setting</li>
             <li class="nav-item">
             <a href="{{route('profile')}}" class="nav-link">

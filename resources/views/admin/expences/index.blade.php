@@ -49,7 +49,7 @@
                                         <tr>
 
                                             <td>{{$row->user_id}}</td>
-                                            <td>{{$row->category_id}}</td>
+                                            <td>{{$row->category->name}}</td>
                                             <td>{{$row->date}}</td>
                                             <td>{{$row->price}}</td>
                                             <td>

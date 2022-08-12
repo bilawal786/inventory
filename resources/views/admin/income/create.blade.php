@@ -46,7 +46,7 @@
                                         <select class="form-control select2" name="category_id" style="width: 100%;" required>
                                             <option value="">Select category *</option>
                                             @foreach($category as $row)
-                                                <option value="{{$row->id}}">{{$row->types}}</option>
+                                                <option value="{{$row->id}}">{{$row->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>

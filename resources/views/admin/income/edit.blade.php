@@ -46,7 +46,7 @@
                                         <select class="form-control select2" name="category_id" style="width: 100%;" required>
                                             <option value="">Select category *</option>
                                             @foreach($categoryes as $row)
-                                                <option value="{{$row->id}}" {{ $row->id == $row->id  ? 'selected' : '' }}>{{$row->types}}</option>
+                                                <option value="{{$row->id}}" {{ $row->id == $row->id  ? 'selected' : '' }}>{{$row->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -54,9 +54,7 @@
                                         <label>Date</label>
                                         <input type="date"   name="date" class="form-control" value="{{$incomeedit->date}}" required>
                                     </div>
-
                                     <!-- /.col -->
-
                                     <div class="form-group">
                                         <label>Price *</label>
                                         <input type="number" name="price" value="{{$incomeedit->price}}" class="form-control" required>

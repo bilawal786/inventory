@@ -17,11 +17,11 @@ class ExpenceController extends Controller
         return view('admin.expences.index',compact('expences'));
     }
     public function category(){
-        $catego=Categor::all();
+        $catego=Categor::where('types','expence')->get();
         return view('admin.expences.category',compact('catego'));
     }
     public function create(){
-        $catego=Categor::where('name','expences')->get();
+        $catego=Categor::where('types','expence')->get();
         return view('admin.expences.create',compact('catego'));
     }
     public function store(Request $request){
@@ -42,7 +42,7 @@ class ExpenceController extends Controller
     public function edit($id)
     {
         $expenedit=Expences::find($id);
-       $categoryes=Categor::where('name','expences')->get();
+       $categoryes=Categor::where('types','expences')->get();
         return view('admin.expences.edit',compact('expenedit','categoryes'));
     }
     public function delete($id)
