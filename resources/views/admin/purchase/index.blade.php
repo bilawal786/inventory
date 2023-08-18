@@ -79,9 +79,19 @@
                                                     <i class="fa fa-pen"></i>
                                                 </a>
 
-                                                <a href="{{route('product.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">
-                                                    <i class="fa fa-times"></i>
-                                                </a>
+{{--                                                <a href="{{route('product.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">--}}
+{{--                                                    <i class="fa fa-times"></i>--}}
+{{--                                                </a>--}}
+                                                <form action="{{route('purchase.delete',$row->id)}}" method="post"
+                                                      style="display: inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger"
+                                                            style="padding-left:8px ;padding-right: 8px; padding-top: 3px; padding-bottom: 3px"
+                                                            onclick="return confirm('Are you sure you want to delete this?')">
+                                                        <i class="fa fa-times"></i>
+                                                    </button>
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach

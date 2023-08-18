@@ -22,12 +22,12 @@ Route::post('/advance/search', 'LeadController@advancesearch')->name('advance.se
 
 //category
 Route::resource('/categories', 'CategoryController');
-Route::get('category/delete/{id}', 'CategoryController@delete')->name('categories.delete');
+//Route::get('category/delete/{id}', 'CategoryController@delete')->name('categories.delete');
 
 //product
 Route::get('product/create', 'ProductController@create')->name('product.create');
 Route::get('product/index', 'ProductController@index')->name('product.index');
-Route::get('product/delete/{id}', 'ProductController@delete')->name('product.delete');
+Route::delete('product/delete/{id}', 'ProductController@delete')->name('product.delete');
 Route::post('product/store', 'ProductController@store')->name('product.store');
 Route::get('product/edit/{id}', 'ProductController@edit' )->name('product.edit');
 Route::get('product/update/{id}', 'ProductController@update' )->name('product.update');
@@ -38,11 +38,12 @@ Route::get('purchase/index', 'PurchaseController@index')->name('purchase.index')
 Route::get('purchase/edit/{id}', 'PurchaseController@edit')->name('purchase.edit');
 Route::post('purchase/store', 'PurchaseController@store')->name('purchase.store');
 Route::post('purchase/update/{id}', 'PurchaseController@update')->name('purchase.update');
+Route::delete('purchase/delete/{id}', 'PurchaseController@delete')->name('purchase.delete');
 
 //Supplier
 Route::get('supplier/create', 'SupplierController@create')->name('supplier.create');
 Route::get('supplier/index', 'SupplierController@index')->name('supplier.index');
-Route::get('supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');
+Route::delete('supplier/delete/{id}', 'SupplierController@delete')->name('supplier.delete');
 Route::post('supplier/store', 'SupplierController@store')->name('supplier.store');
 Route::get('supplier/edit/{id}', 'SupplierController@edit')->name('supplier.edit');
 Route::post('supplier/update/{id}','SupplierController@update')->name('supplier.update');
@@ -52,7 +53,7 @@ Route::get('customer/create', 'CustomerController@create')->name('customer.creat
 Route::get('customer/edit/{id}', 'CustomerController@edit')->name('customer.edit');
 Route::get('customer/index', 'CustomerController@index')->name('customer.index');
 Route::post('customer/store', 'CustomerController@store')->name('customer.store');
-Route::get('customer/delete/{id}', 'CustomerController@delete')->name('customer.delete');
+Route::delete('customer/delete/{id}', 'CustomerController@delete')->name('customer.delete');
 Route::get('customer/update/{id}', 'CustomerController@update')->name('customer.update');
 //Sales
 Route::get('sales/create', 'SalesController@create')->name('sales.create');
@@ -75,7 +76,7 @@ Route::get('invoice/print','InvoiceController@create')->name('invoice.print');
     Route::get('expence/create','ExpenceController@create')->name('expence.create');
     Route::post('expence/store','ExpenceController@store')->name('expence.store');
     Route::get('expence/edit/{id}','ExpenceController@edit')->name('expence.edit');
-    Route::get('expence/delete/{id}','ExpenceController@delete')->name('expence.delete');
+    Route::delete('expence/delete/{id}','ExpenceController@delete')->name('expence.delete');
     Route::get('expence/update/{id}','ExpenceController@update')->name('expence.update');
 
 
@@ -86,11 +87,11 @@ Route::get('invoice/print','InvoiceController@create')->name('invoice.print');
     Route::post('income/store','IncomeController@store')->name('income.store');
     Route::get('income/update/{id}','IncomeController@update')->name('income.update');
     Route::get('income/edit/{id}','IncomeController@edit')->name('income.edit');
-    Route::get('income/delete/{id}','IncomeController@delete')->name('income.delete');
+    Route::delete('income/delete/{id}','IncomeController@delete')->name('income.delete');
 
     Route::post('category/store','CategorController@store')->name('categor.store');
     Route::get('categor/category','CategorController@index')->name('categor.index');
-    Route::get('categor/delete/{id}','CategorController@delete')->name('categor.delete');
+    Route::delete('categor/delete/{id}','CategorController@delete')->name('categor.delete');
     Route::get('categor/edit/{id}','CategorController@edit')->name('categor.edit');
     Route::get('categor/update/{id}','CategorController@update')->name('categor.update');
 
@@ -153,7 +154,7 @@ Route::post('/lead/store', [
     'as' => 'lead.store'
 ]);
 
-Route::get('/lead/delete/{id}', [
+Route::delete('/lead/delete/{id}', [
     'uses' => 'LeadController@delete',
     'as' => 'lead.delete'
 ]);

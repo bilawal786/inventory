@@ -51,6 +51,16 @@ class PurchaseController extends Controller
         $purchase = Purchase::find($id);
         return view('admin.purchase.edit', compact('purchase', 'suppliers', 'products'));
     }
+
+    public function delete($id){
+        $purchase = Purchase::find($id);
+        $purchase->delete();
+        $notification = array(
+            'messege' => 'Purchase Delete!',
+            'alert-type' => 'error'
+        );
+        return redirect()->back()->with($notification);
+    }
     public function update(Request $request, $id){
         $purchase = Purchase::find($id);
         $purchase->product_id = $request->product_id;

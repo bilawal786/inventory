@@ -32,7 +32,7 @@ class CreatePurchasesTable extends Migration
 
             $table->string('referenceno');
 
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('status')->default('0');
             $table->timestamps();
         });

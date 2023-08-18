@@ -29,7 +29,8 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title"></h3>
-                               <a  data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-success"><i class="fa fa-plus"></i>  Add New Category</a>
+                                <a data-toggle="modal" data-target="#modal-lg" class="btn btn-sm btn-success"><i
+                                        class="fa fa-plus"></i> Add New Category</a>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">
@@ -45,28 +46,41 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach($categories as $row)
-                                            <tr>
-                                                <td>{{$row->id}}</td>
-                                                <td>
-                                                    <a href="{{$row->image}}">
-                                                        <img height="30px" src="{{empty($row->image) ? asset('assets/dist/img/AdminLTELogo.png') : asset($row->image)}}" alt="">
-                                                    </a>
-                                                </td>
-                                                <td>{{$row->name}}</td>
-                                                <td>{{$row->products->count()}}</td>
-                                                <td>{{$row->products->sum('stock')}}</td>
-                                                <td>
-                                                    <a href="" class="btn btn-sm btn-success" data-toggle="tooltip" title="edit">
-                                                        <i class="fa fa-pen"></i>
-                                                    </a>
-
-                                                    <a href="{{route('categories.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">
+                                    @foreach($categories as $row)
+                                        <tr>
+                                            <td>{{$row->id}}</td>
+                                            <td>
+                                                <a href="{{$row->image}}">
+                                                    <img height="30px"
+                                                         src="{{empty($row->image) ? asset('assets/dist/img/AdminLTELogo.png') : asset($row->image)}}"
+                                                         alt="">
+                                                </a>
+                                            </td>
+                                            <td>{{$row->name}}</td>
+                                            <td>{{$row->products->count()}}</td>
+                                            <td>{{$row->products->sum('stock')}}</td>
+                                            <td>
+                                                <a href="" class="btn btn-sm btn-success" data-toggle="tooltip"
+                                                   title="edit">
+                                                    <i class="fa fa-pen"></i>
+                                                </a>
+                                                <form action="{{route('categories.destroy',$row->id)}}" method="post"
+                                                      style="display: inline-block">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger"
+                                                            style="padding-left:8px ;padding-right: 8px; padding-top: 3px; padding-bottom: 3px"
+                                                            onclick="return confirm('Are you sure you want to delete this?')">
                                                         <i class="fa fa-times"></i>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        @endforeach
+                                                    </button>
+                                                </form>
+
+                                                {{--                                                    <a href="{{route('categories.delete', ['id' => $row->id])}}" class="btn btn-sm btn-danger" data-toggle="tooltip" id="delete" title="Delete">--}}
+                                                {{--                                                        <i class="fa fa-times"></i>--}}
+                                                {{--                                                    </a>--}}
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -92,20 +106,21 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{ route('categories.store') }}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form action="{{ route('categories.store') }}" method="post" accept-charset="UTF-8"
+                          enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Category Name *</label>
-                                        <input  type="text" class="form-control" name="name" required="">
+                                        <input type="text" class="form-control" name="name" required="">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="exampleInputPassword1">Image *</label>
-                                        <input  type="file" class="form-control" name="image">
+                                        <input type="file" class="form-control" name="image">
                                     </div>
                                 </div>
 

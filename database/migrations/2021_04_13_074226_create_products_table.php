@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('code');
             $table->string('image')->nullable();
             $table->string('unit')->nullable();
-            $table->string('description')->nullable();
+            $table->longText('description')->nullable();
             $table->string('status')->default('1');
             $table->timestamps();
         });

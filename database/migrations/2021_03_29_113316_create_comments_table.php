@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('lead_id');
             $table->foreign('lead_id')->references('id')->on('leads')->onDelete('cascade');
-            $table->string('comment');
+            $table->longText('comment');
             $table->timestamps();
         });
     }
