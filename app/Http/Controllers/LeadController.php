@@ -40,15 +40,9 @@ class LeadController extends Controller
         $lead->call_date = $request->call_date;
         $lead->follow_date = $request->follow_date;
         $lead->source = $request->source;
-
-
         $lead->save();
-
-        $notification = array(
-            'message' => 'Lead Added Successfully!',
-            'alert-type' => 'success'
-        );
-        return redirect()->back()->with($notification);
+        session()->flash('success', 'Item created successfully.');
+        return redirect()->route('lead.index');
     }
 
     public function delete($id)

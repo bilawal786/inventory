@@ -133,4 +133,14 @@
     </section>
     <!-- /.content -->
   </div>
-  @endsection
+  <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.js"></script>
+  <script>
+      // Initialize Toastr
+      toastr.options = {
+          "closeButton": true,
+          "progressBar": true,
+          // Other options...
+      };
+  </script>
+
+@endsection

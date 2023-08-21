@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item"><a href="{{route('home')}}">Home</a></li>
                             <li class="breadcrumb-item active">Add New Sales</li>
                         </ol>
                     </div>
@@ -24,7 +24,7 @@
                 <!-- SELECT2 EXAMPLE -->
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3 class="card-title">Cutomer Detail</h3>
+                        <h3 class="card-title">Customer Detail</h3>
 
                         <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -35,25 +35,38 @@
                             </button>
                         </div>
                     </div>
-            <form action="{{route('sales.store')}}" method="post" accept-charset="UTF-8" enctype="multipart/form-data">
+                    <form action="{{route('sales.store')}}" method="post" accept-charset="UTF-8"
+                          enctype="multipart/form-data">
                         @csrf
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Product *</label>
-                                        <select class="form-control  save-data select2" id="save-data"name="product_id" style="width: 100%;" required>
+                                        {{--                                        <select class="form-control  save-data select2" id="save-data" name="product_id"--}}
+                                        {{--                                                multiple="multiple" data-placeholder="Select a State"--}}
+                                        {{--                                                style="width: 100%;" required>--}}
+                                        {{--                                            <option value="">Select Product *</option>--}}
+                                        {{--                                            @foreach($products as $row)--}}
+                                        {{--                                                <option value="{{$row->id}}">{{$row->name}} ({{$row->code}})</option>--}}
+                                        {{--                                                <br>--}}
+                                        {{--                                            @endforeach--}}
+                                        {{--                                        </select>--}}
+                                        <select class="form-control save-data select2" id="save-data" name="product_id"
+                                                multiple="multiple" data-placeholder="Select a Product"
+                                                style="width: 100%;" required>
                                             <option value="">Select Product *</option>
                                             @foreach($products as $row)
                                                 <option value="{{$row->id}}">{{$row->name}} ({{$row->code}})</option>
                                             @endforeach
-                                       </select>
-                                  </div>
-                            </div>
+                                        </select>
+                                    </div>
+                                </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Customer</label>
-                                        <select class="form-control select2" name="customer_id"  style="width: 100%;" required>
+                                        <select class="form-control select2" name="customer_id" style="width: 100%;"
+                                                required>
                                             <option value="">Select Customer</option>
                                             @foreach($customers as $row)
                                                 <option value="{{$row->id}}">{{$row->name}}</option>
@@ -63,14 +76,14 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-md-10">
+                                <div class="col-12">
                                     <div class="card">
                                         <div class="card-header bg-success">
                                             <h3 class="card-title">Bordered Table</h3>
                                         </div>
                                         <!-- /.card-header -->
                                         <div class="card-body">
-                                            <table class="table table-bordered" id="ajextable" >
+                                            <table class="table table-bordered" id="ajextable">
                                                 <thead>
                                                 <tr>
                                                     <th>Product</th>
@@ -95,7 +108,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Grandtotal</label>
-                                                <div id="grdtotal" >
+                                                <div id="grdtotal">
 
                                                 </div>
                                             </div>
@@ -104,9 +117,7 @@
                                     <input type="hidden" name="grandtotal" id="grndtotal1">
                                     <button type="submit" class="btn btn-primary">Add Sale\print</button>
                                 </div>
-
                             </div>
-
                         </div>
                     </form>
                 </div>
@@ -116,65 +127,282 @@
 @endsection
 @section('script')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxy/1.6.1/scripts/jquery.ajaxy.min.js"></script>
+    {{--    <script>--}}
+    {{--        $(".save-data").change(function (event) {--}}
+    {{--            let id = $(".save-data").val();--}}
+    {{--            $.ajax({--}}
+    {{--                url: "/ajax-request/" + id,--}}
+    {{--                type: "get",--}}
+
+    {{--                success: function (response) {--}}
+    {{--                    console.log(response);--}}
+    {{--                    if (response) {--}}
+    {{--                        $('#myTable').append("<tr><input type='hidden' name='product_id[]' value=" + response.id + ">  <td>" + response.name + "(" + response.stock + ")<br>" + response.code + " <input type='hidden' name='stock[]' value=" + response.stock + "> <input type='hidden' name='code[]' value=" + response.code + "> <input type='hidden' id='nam' value=" + response.name + " name='name[]'  ></td><td   id='price" + response.code + "'>" + response.price + "</td> <input type='hidden'  id='pprice' name='price[]' value=" + response.price + "> <td id='stock' ><input type='number' class='form-control'  min='1' oninput='subtotal(" + response.code + ")' value='0' name='quantity[]' id='quantity" + response.code + "' ></td><input type='hidden'  name='subtotal[]'    id='subtotal" + response.code + "'  ><td class='gtotal'  id='total" + response.code + "'>  </td> <td> <a class='btn btn-danger deletebtn'> x </a> </td> </tr>");--}}
+    {{--                    }--}}
+    {{--                },--}}
+    {{--                error: function (error) {--}}
+    {{--                }--}}
+    {{--            });--}}
+    {{--        });--}}
+
+    {{--        function insRow() {--}}
+
+    {{--            var table = document.getElementById('purchase_table');--}}
+    {{--            var rowCount = table.rows.length;--}}
+    {{--            var row = table.insertRow(rowCount);--}}
+    {{--            var colCount = table.rows[1].cells.length;--}}
+    {{--            for (var i = 0; i < colCount; i++) {--}}
+    {{--                var newcell = row.insertCell(i);--}}
+    {{--                newcell.innerHTML = table.rows[1].cells[i].innerHTML;--}}
+    {{--            }--}}
+    {{--        }--}}
+
+    {{--        function subtotal($id) {--}}
+
+    {{--            var qty = $('#quantity' + $id).val();--}}
+
+    {{--            var qty = event.target.value;--}}
+    {{--            var price = $('#price' + $id).html();--}}
+    {{--            var total = qty * price;--}}
+
+    {{--            $("#total" + $id).text(total);--}}
+
+    {{--            $("#subtotal" + $id).val(total);--}}
+
+    {{--            getGrandTotal();--}}
+    {{--        }--}}
+
+    {{--        function getGrandTotal() {--}}
+    {{--            var sum = 0;--}}
+    {{--            $('.gtotal').each(function () {--}}
+    {{--                sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText--}}
+    {{--            });--}}
+    {{--            $("#grdtotal").html(sum);--}}
+    {{--            $("#grndtotal1").val(sum);--}}
+    {{--            $("#total").val(sum);--}}
+    {{--        }--}}
+
+    {{--        $("#myTable").on('click', '.deletebtn', function () {--}}
+    {{--            $(this).closest('tr').remove();--}}
+    {{--            subtotal();--}}
+    {{--        });--}}
+    {{--        getGrandTotal();--}}
+    {{--    </script>--}}
+
+    <!------------------------------------------>
+
+    {{--    <script>--}}
+    {{--        $(document).ready(function () {--}}
+    {{--            $('.select2').select2();--}}
+
+    {{--            var selectedProductIds = []; // Store selected product IDs--}}
+
+    {{--            $(".save-data").change(function (event) {--}}
+    {{--                let selectedIds = $(this).val();--}}
+    {{--                let newIds = selectedIds.filter(id => !selectedProductIds.includes(id));--}}
+
+    {{--                if (newIds.length > 0) {--}}
+    {{--                    selectedProductIds.push(...newIds);--}}
+
+    {{--                    newIds.forEach(id => {--}}
+    {{--                        $.ajax({--}}
+    {{--                            url: "/ajax-request/" + id,--}}
+    {{--                            type: "get",--}}
+    {{--                            success: function (response) {--}}
+    {{--                                console.log(response);--}}
+    {{--                                if (response) {--}}
+    {{--                                    $('#myTable').append("<tr><input type='hidden' name='product_id[]' value=" + response.id + ">  <td>" + response.name + "(" + response.stock + ")<br>" + response.code + " <input type='hidden' name='stock[]' value=" + response.stock + "> <input type='hidden' name='code[]' value=" + response.code + "> <input type='hidden' id='nam' value=" + response.name + " name='name[]'></td><td id='price" + response.code + "'>" + response.price + "</td> <input type='hidden' id='pprice' name='price[]' value=" + response.price + "> <td id='stock'><input type='number' class='form-control' min='1' oninput='subtotal(" + response.code + ")' value='0' name='quantity[]' id='quantity" + response.code + "' ></td><input type='hidden' name='subtotal[]' id='subtotal" + response.code + "'><td class='gtotal' id='total" + response.code + "'>  </td> <td> <a class='btn btn-danger deletebtn'> x </a> </td> </tr>");--}}
+    {{--                                }--}}
+    {{--                            },--}}
+    {{--                            error: function (error) {--}}
+    {{--                            }--}}
+    {{--                        });--}}
+    {{--                    });--}}
+    {{--                }--}}
+    {{--            });--}}
+
+    {{--            function subtotal($id) {--}}
+    {{--                var qty = parseFloat($('#quantity' + $id).val());--}}
+    {{--                var price = parseFloat($('#price' + $id).text());--}}
+    {{--                var total = qty * price;--}}
+
+    {{--                $("#total" + $id).text(total.toFixed(2));--}}
+    {{--                $("#subtotal" + $id).val(total.toFixed(2));--}}
+
+    {{--                getGrandTotal();--}}
+    {{--            }--}}
+
+    {{--            function getGrandTotal() {--}}
+    {{--                var sum = 0;--}}
+    {{--                $('.gtotal').each(function () {--}}
+    {{--                    sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText--}}
+    {{--                });--}}
+    {{--                $("#grdtotal").html(sum.toFixed(2));--}}
+    {{--                $("#grndtotal1").val(sum.toFixed(2));--}}
+    {{--                $("#total").val(sum.toFixed(2));--}}
+    {{--            }--}}
+
+    {{--            $("#myTable").on('click', '.deletebtn', function () {--}}
+    {{--                $(this).closest('tr').remove();--}}
+    {{--                getGrandTotal();--}}
+    {{--            });--}}
+
+    {{--            getGrandTotal();--}}
+    {{--        });--}}
+    {{--    </script>--}}
+
+
+    <!------------------------------------------->
+
+    {{--        <script>--}}
+    {{--        $(document).ready(function () {--}}
+    {{--            $('.select2').select2();--}}
+
+    {{--            var selectedProductIds = []; // Store selected product IDs--}}
+
+    {{--            $(".save-data").change(function (event) {--}}
+    {{--                let selectedIds = $(this).val();--}}
+    {{--                let newIds = selectedIds.filter(id => !selectedProductIds.includes(id));--}}
+
+    {{--                if (newIds.length > 0) {--}}
+    {{--                    selectedProductIds.push(...newIds);--}}
+
+    {{--                    newIds.forEach(id => {--}}
+    {{--                        $.ajax({--}}
+    {{--                            url: "/ajax-request/" + id,--}}
+    {{--                            type: "get",--}}
+    {{--                            success: function (response) {--}}
+    {{--                                console.log(response);--}}
+    {{--                                if (response) {--}}
+    {{--                                    $('#myTable').append("<tr><input type='hidden' name='product_id[]' value=" + response.id + ">  <td>" + response.name + "(" + response.stock + ")<br>" + response.code + " <input type='hidden' name='stock[]' value=" + response.stock + "> <input type='hidden' name='code[]' value=" + response.code + "> <input type='hidden' id='nam' value=" + response.name + " name='name[]'></td><td id='price" + response.code + "'>" + response.price + "</td> <input type='hidden' id='pprice' name='price[]' value=" + response.price + "> <td id='stock'><input type='number' class='form-control' min='1' oninput='subtotal(" + response.code + ")' value='0' name='quantity[]' id='quantity" + response.code + "' ></td><input type='hidden' name='subtotal[]' id='subtotal" + response.code + "'><td class='gtotal' id='total" + response.code + "'>  </td> <td> <a class='btn btn-danger deletebtn'> x </a> </td> </tr>");--}}
+    {{--                                }--}}
+    {{--                            },--}}
+    {{--                            error: function (error) {--}}
+    {{--                            }--}}
+    {{--                        });--}}
+    {{--                    });--}}
+    {{--                }--}}
+    {{--            });--}}
+
+    {{--            function subtotal($id) {--}}
+    {{--                var qty = $('#quantity' + $id).val();--}}
+    {{--                var price = $('#price' + $id).html();--}}
+    {{--                var total = qty * price;--}}
+
+    {{--                $("#total" + $id).text(total);--}}
+    {{--                $("#subtotal" + $id).val(total);--}}
+
+    {{--                getGrandTotal();--}}
+    {{--            }--}}
+
+    {{--            function getGrandTotal() {--}}
+    {{--                var sum = 0;--}}
+    {{--                $('.gtotal').each(function () {--}}
+    {{--                    sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText--}}
+    {{--                });--}}
+    {{--                $("#grdtotal").html(sum);--}}
+    {{--                $("#grndtotal1").val(sum);--}}
+    {{--                $("#total").val(sum);--}}
+    {{--            }--}}
+
+    {{--            $("#myTable").on('click', '.deletebtn', function () {--}}
+    {{--                var row = $(this).closest('tr');--}}
+    {{--                var productId = row.find('input[name="product_id[]"]').val();--}}
+
+    {{--                // Remove product ID from selectedProductIds--}}
+    {{--                var index = selectedProductIds.indexOf(productId);--}}
+    {{--                if (index !== -1) {--}}
+    {{--                    selectedProductIds.splice(index, 1);--}}
+    {{--                }--}}
+
+    {{--                row.remove();--}}
+    {{--                getGrandTotal();--}}
+    {{--            });--}}
+
+    {{--            getGrandTotal();--}}
+
+    {{--        });--}}
+    {{--    </script>--}}
+
     <script>
-        $(".save-data").change(function(event){
-            let id = $(".save-data").val();
-            $.ajax({
-                url: "/ajax-request/"+id,
-                type:"get",
+        $(document).ready(function () {
+            $('.select2').select2();
 
-                success:function(response){
-                    console.log(response);
-                    if(response) {
-                        $('#myTable').append("<tr><input type='hidden' name='product_id[]' value="+response.id+">  <td>" +response.name+"("+response.stock+")<br>"+response.code+" <input type='hidden' name='stock[]' value="+response.stock+"> <input type='hidden' name='code[]' value="+response.code+"> <input type='hidden' id='nam' value="+response.name+" name='name[]'  ></td><td   id='price"+response.code+"'>"+response.price+"</td> <input type='hidden'  id='pprice' name='price[]' value="+response.price+"> <td id='stock' ><input type='number' class='form-control'  min='1' oninput='subtotal("+response.code+")' value='0' name='quantity[]' id='quantity"+response.code+"' ></td><input type='hidden'  name='subtotal[]'    id='subtotal"+response.code+"'  ><td class='gtotal'  id='total"+response.code+"'>  </td> <td> <a class='btn btn-danger deletebtn'> x </a> </td> </tr>");
+            var selectedProductIds = []; // Store selected product IDs
 
-                    }
-                },
-                error: function(error) {
+            $(".save-data").change(function (event) {
+                let selectedIds = $(this).val();
+                let newIds = selectedIds.filter(id => !selectedProductIds.includes(id));
+
+                if (newIds.length > 0) {
+                    selectedProductIds.push(...newIds);
+
+                    newIds.forEach(id => {
+                        $.ajax({
+                            url: "/ajax-request/" + id,
+                            type: "get",
+                            success: function (response) {
+                                console.log(response);
+                                if (response) {
+                                    $('#myTable').append("<tr><input type='hidden' name='product_id[]' value=" + response.id + ">  <td>" + response.name + "(" + response.stock + ")<br>" + response.code + " <input type='hidden' name='stock[]' value=" + response.stock + "> <input type='hidden' name='code[]' value=" + response.code + "> <input type='hidden' id='nam' value=" + response.name + " name='name[]'></td><td id='price" + response.code + "'>" + response.price + "</td> <input type='hidden' id='pprice' name='price[]' value=" + response.price + "> <td id='stock'><input type='number' class='form-control' min='1' oninput='subtotal(" + response.code + ")' value='0' name='quantity[]' id='quantity" + response.code + "' ></td><input type='hidden' name='subtotal[]' id='subtotal" + response.code + "'><td class='gtotal' id='total" + response.code + "'>  </td> <td> <a class='btn btn-danger deletebtn'> x </a> </td> </tr>");
+                                }
+                            },
+                            error: function (error) {
+                            }
+                        });
+                    });
                 }
             });
-        });
-        function insRow() {
 
-            var table = document.getElementById('purchase_table');
-            var rowCount = table.rows.length;
-            var row = table.insertRow(rowCount);
-            var colCount = table.rows[1].cells.length;
-            for (var i = 0; i < colCount; i++) {
-                var newcell = row.insertCell(i);
-                newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+            function insRow() {
+                var table = document.getElementById('purchase_table');
+                var rowCount = table.rows.length;
+                var row = table.insertRow(rowCount);
+                var colCount = table.rows[1].cells.length;
+                for (var i = 0; i < colCount; i++) {
+                    var newcell = row.insertCell(i);
+                    newcell.innerHTML = table.rows[1].cells[i].innerHTML;
+                }
             }
-        }
-        function subtotal($id){
 
-            var qty = $('#quantity'+$id).val();
+            function subtotal($id) {
+                var qty = $('#quantity' + $id).val();
+                var price = $('#price' + $id).text(); // Use .text() to get the content without HTML tags
+                var total = qty * price;
 
-            var qty = event.target.value;
-            var price = $('#price'+$id).html();
-            var total = qty*price;
+                $("#total" + $id).text(total);
+                $("#subtotal" + $id).val(total);
 
-            $("#total"+$id).text(total);
+                getGrandTotal();
+            }
 
-            $("#subtotal"+$id).val(total);
+            function getGrandTotal() {
+                var sum = 0;
+                $('.gtotal').each(function () {
+                    sum += parseFloat($(this).text());
+                });
+                $("#grdtotal").text(sum); // Update the content using .text()
+                $("#grndtotal1").val(sum);
+                $("#total").val(sum);
+            }
+
+            $("#myTable").on('click', '.deletebtn', function () {
+                var row = $(this).closest('tr');
+                var productId = row.find('input[name="product_id[]"]').val();
+
+                // Remove product ID from selectedProductIds
+                var index = selectedProductIds.indexOf(productId);
+                if (index !== -1) {
+                    selectedProductIds.splice(index, 1);
+                }
+
+                row.remove();
+                getGrandTotal();
+            });
 
             getGrandTotal();
-        }
-        function getGrandTotal(){
-            var sum = 0;
-            $('.gtotal').each(function(){
-                sum += parseFloat($(this).text());  // Or this.innerHTML, this.innerText
-            });
-            $("#grdtotal").html(sum);
-            $("#grndtotal1").val(sum);
-            $("#total").val(sum);
-        }
-        $("#myTable").on('click', '.deletebtn', function () {
-            $(this).closest('tr').remove();
-            subtotal();
         });
-        getGrandTotal();
     </script>
-
 
 
 @endsection
