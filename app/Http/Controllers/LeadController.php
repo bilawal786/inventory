@@ -41,7 +41,8 @@ class LeadController extends Controller
         $lead->follow_date = $request->follow_date;
         $lead->source = $request->source;
         $lead->save();
-        session()->flash('success', 'Item created successfully.');
+        session()->flash('alert-type', 'success');
+        session()->flash('messege', 'Item created successfully.');
         return redirect()->route('lead.index');
     }
 

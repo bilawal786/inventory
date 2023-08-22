@@ -62,7 +62,7 @@ Route::get('sales/view{id}','SalesController@view')->name('sales.view');
 Route::get('sales/index', 'SalesController@index')->name('sales.index');
 Route::get('sales/update{id}','SalesController@update')->name('sales.update');
 Route::get('sales/edit/{id}', 'SalesController@edit')->name('sales.edit');
-Route::get('sales/delete/{id}','SalesController@delete')->name('sales.delete');
+Route::delete('sales/delete/{id}','SalesController@delete')->name('sales.delete');
 //ajex call
 Route::get('ajax-request/{id}', 'AjaxController@create')->name('create');
 Route::post('ajax-request', [AjaxController::class, 'store']);
@@ -188,6 +188,7 @@ Route::post('/lead/import', [
     'uses' => 'LeadController@import',
     'as' => 'lead.import'
 ]);
+
 Route::post('/comment/import', [
     'uses' => 'LeadController@commentimport',
     'as' => 'comment.import'

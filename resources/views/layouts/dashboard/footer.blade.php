@@ -62,9 +62,9 @@
 
  <!-- dropzonejs -->
  <script src="{{asset('assets/plugins/dropzone/min/dropzone.min.js')}}"></script>
+ <script src="{{asset('unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 
 <script type="text/javascript" src="{{asset('cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js')}}"></script>
-<script src="{{asset('unpkg.com/sweetalert/dist/sweetalert.min.js')}}"></script>
 <script>
         @if(Session::has('messege'))
           var type="{{Session::get('alert-type','info')}}"
