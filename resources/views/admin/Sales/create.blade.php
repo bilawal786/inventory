@@ -202,18 +202,10 @@
     <script>
         var selectedProductIds = [];
 
-
         function subtotal($id) {
             var qty = $('#quantity' + $id).val();
             var price = $('#price' + $id).html();
             var total = qty * price;
-
-            // var stockInputValue = $('#stock' + $id).val();
-            // console.log('Stock input value:', stockInputValue);
-            // if (qty > availableStock) {
-            //     alert('Quantity exceeds available stock!');
-            //     return;
-            // }
 
             $("#total" + $id).text(total);
             $("#subtotal" + $id).val(total);
@@ -279,86 +271,5 @@
             getGrandTotal();
         });
     </script>
-
-
-    {{--    <script>--}}
-    {{--        var selectedProductIds = [];--}}
-
-    {{--        function subtotal($id) {--}}
-    {{--            var qty = $('#quantity' + $id).val();--}}
-    {{--            var price = $('#price' + $id).html();--}}
-    {{--            var total = qty * price;--}}
-
-    {{--            var availableStock = parseInt($('#stock' + $id).val());--}}
-    {{--            if (qty > availableStock) {--}}
-    {{--                alert('Quantity exceeds available stock!');--}}
-    {{--                return;--}}
-    {{--            }--}}
-
-    {{--            $("#total" + $id).text(total);--}}
-    {{--            $("#subtotal" + $id).val(total);--}}
-
-    {{--            getGrandTotal();--}}
-    {{--        }--}}
-
-    {{--        function getGrandTotal() {--}}
-    {{--            var sum = 0;--}}
-    {{--            $('.gtotal').each(function () {--}}
-    {{--                sum += parseFloat($(this).text());--}}
-    {{--            });--}}
-    {{--            $("#grdtotal").html(sum);--}}
-    {{--            $("#grndtotal1").val(sum);--}}
-    {{--            $("#total").val(sum);--}}
-    {{--        }--}}
-
-    {{--        $(document).ready(function () {--}}
-    {{--            $('.select2').select2();--}}
-
-    {{--            $(".save-data").change(function (event) {--}}
-    {{--                let selectedIds = $(this).val();--}}
-    {{--                let newIds = selectedIds.filter(id => !selectedProductIds.includes(id));--}}
-
-    {{--                if (newIds.length > 0) {--}}
-    {{--                    selectedProductIds.push(...newIds);--}}
-
-    {{--                    newIds.forEach(id => {--}}
-    {{--                        $.ajax({--}}
-    {{--                            url: "/ajax-request/" + id,--}}
-    {{--                            type: "get",--}}
-    {{--                            success: function (response) {--}}
-    {{--                                if (response) {--}}
-    {{--                                    $('#myTable').append("<tr><input type='hidden' name='product_id[]' value=" + response.id + ">  <td>" + response.name + "(" + response.stock + ")<br>" + response.code + " <input type='hidden' name='stock[]' value=" + response.stock + "> <input type='hidden' name='code[]' value=" + response.code + "> <input type='hidden' id='nam' value=" + response.name + " name='name[]'  ></td><td   id='price" + response.code + "'>" + response.price + "</td> <input type='hidden'  id='price' name='price[]' value=" + response.price + "> <td id='stock" + response.code + "' ><input type='number' class='form-control'  min='1' oninput='subtotal(" + response.code + ")' value='0' name='quantity[]' id='quantity" + response.code + "' ></td><input type='hidden'  name='subtotal[]'    id='subtotal" + response.code + "'  ><td class='gtotal'  id='total" + response.code + "'>  </td> <td> <a class='btn btn-danger deletebtn'> x </a> </td> </tr>");--}}
-    {{--                                }--}}
-    {{--                            },--}}
-    {{--                            error: function (error) {--}}
-    {{--                                // Handle error--}}
-    {{--                            }--}}
-    {{--                        });--}}
-    {{--                    });--}}
-    {{--                }--}}
-    {{--            });--}}
-
-    {{--            $("#myTable").on('click', '.deletebtn', function () {--}}
-    {{--                var row = $(this).closest('tr');--}}
-    {{--                var productId = row.find('input[name="product_id[]"]').val();--}}
-
-    {{--                // Remove the row before updating selectedProductIds--}}
-    {{--                row.remove();--}}
-
-    {{--                // Remove product ID from selectedProductIds--}}
-    {{--                var index = selectedProductIds.indexOf(productId);--}}
-    {{--                if (index !== -1) {--}}
-    {{--                    selectedProductIds.splice(index, 1);--}}
-    {{--                }--}}
-
-    {{--                // Unselect the removed product from the dropdown--}}
-    {{--                $(".save-data").val(selectedProductIds).trigger('change');--}}
-
-    {{--                getGrandTotal();--}}
-    {{--            });--}}
-
-    {{--            getGrandTotal();--}}
-    {{--        });--}}
-    {{--    </script>--}}
 
 @endsection

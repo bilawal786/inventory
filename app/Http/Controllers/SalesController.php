@@ -14,13 +14,13 @@ class SalesController extends Controller
         $customers = Customer::where('status', '1')->get();
         $sale= Sales::all();
 
-        return view('admin.sales.index', compact('customers','sale'));
+        return view('admin.Sales.index', compact('customers','sale'));
     }
    public function create(){
 
     $customers = Customer::where('status', '1')->get();
     $products = Product::where('status', '1')->get();
-       return view('admin.sales.create', compact('products','customers'));
+       return view('admin.Sales.create', compact('products','customers'));
    }
 
     public function store(Request $request){
@@ -116,7 +116,7 @@ class SalesController extends Controller
             'messege' => 'sales Update Successfully!',
             'alert-type' => 'success'
         );
-        return Redirect()->route('sales.index')->with($notification);
+        return Redirect()->route('Sales.index')->with($notification);
         }
     public function edit($id){
             $products = Product::where('status', '1')->get();
@@ -137,7 +137,7 @@ class SalesController extends Controller
             $sale=Sales::find($id);
             $customer = Customer::where('status', '1')->get();
             $products =Product::where('status','1')->get();
-            return view('admin.sales.show' , compact('customer','sale','products'));
+            return view('admin.Sales.show' , compact('customer','sale','products'));
 
 
         }
