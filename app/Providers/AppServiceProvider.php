@@ -27,14 +27,14 @@ class AppServiceProvider extends ServiceProvider
        Schema::defaultStringLength(191);
 
 
-      //   if(!empty($app)){
-      //   view()->share('siteTitle', $app->name);
-      //   view()->share('sitelogo', $app->logo);
-      // }
-      // else{
-      //   view()->share('siteTitle', 'Web Generic');
-      //   view()->share('sitelogo', 'assets/dist/img/AdminLTELogo.png');
-      // }
+         if(!empty($app)){
+         view()->share('siteTitle', $app->name);
+         view()->share('sitelogo', $app->logo);
+       }
+       else{
+         view()->share('siteTitle', 'Web Generic');
+         view()->share('sitelogo', 'assets/dist/img/AdminLTELogo.png');
+       }
     }
 
 }
